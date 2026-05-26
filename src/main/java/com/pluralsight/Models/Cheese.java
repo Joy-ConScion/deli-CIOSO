@@ -1,25 +1,17 @@
 package com.pluralsight.Models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cheese {
 
-    private String american;
-    private String provolone;
-    private String cheddar;
-    private String swiss;
+    List<String> cheesy = new ArrayList<>();
 
-    public String getAmerican() {
-        return american;
+    public Cheese() {
+        cheesy.add("american");
+        cheesy.add("provolone");
+        cheesy.add("cheddar");
+        cheesy.add("swiss");
     }
 
-    public String getProvolone() {
-        return provolone;
-    }
-
-    public String getCheddar() {
-        return cheddar;
-    }
-
-    public String getSwiss() {
-        return swiss;
-    }
 }
