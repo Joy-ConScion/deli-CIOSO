@@ -27,9 +27,11 @@ public class Sandwich extends MenuItem {
 
     HashMap<String, String> Size = new HashMap<>();
 
-    Size.put("small", "S");
-    Size.put("regular", "M");
-    Size.put("large", "L");
+    {
+        Size.put("small", "S");
+        Size.put("regular", "M");
+        Size.put("large", "L");
+    }
 
     List<String> breads = new ArrayList<>();
 
