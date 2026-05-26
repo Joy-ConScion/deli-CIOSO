@@ -24,7 +24,33 @@ public class Order {
         customOrder = new ArrayList<>();
     }
 
+    public void addSandwich (MenuItem items){
+        customOrder.add(items);
+    }
+
+    public void addSide (MenuItem items){
+        customOrder.add(items);
+    }
+
     public void addItem (MenuItem items){
         customOrder.add(items);
+    }
+
+    public void getTotal (){}
+
+    public String getSandwich() {
+        return sandwich;
+    }
+
+    public String getSide() {
+        return side;
+    }
+
+    public String getBeverage() {
+        return beverage;
+    }
+
+    public List<MenuItem> getCustomOrder() {
+        return customOrder;
     }
 }
