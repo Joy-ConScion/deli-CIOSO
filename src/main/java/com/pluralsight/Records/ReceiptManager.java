@@ -14,7 +14,7 @@ public class ReceiptManager {
     String time = now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
     static ArrayList<Receipt> receipts = new ArrayList<>();
 
-    public static void writeAction(String formatDate1, String formatTime2, String description, String vendor, double total) {
+    public static void generateAndSaveReceipt(String formatDate1, String formatTime2, String description, String vendor, double total) {
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("ReceiptLog.csv", true))) {
             bufferedWriter.write(formatDate1 + "|" + formatTime2 + "|" + description + "|" + vendor + "|" + total);
             bufferedWriter.newLine();
@@ -37,6 +37,12 @@ public class ReceiptManager {
         } catch (IOException e) {
             System.out.println("Unexpected Error | Entry could not be stored");
         }
+        System.out.println("""
+                
+                Receipt saved to database. Keep up the work!
+                
+                
+                """);
     }
 
     public static ArrayList<Receipt> fetchReceiptLog() {
@@ -66,6 +72,13 @@ public class ReceiptManager {
             System.out.println("Error - Couldn't retrieve request");
             e.printStackTrace();
         }
+        System.out.println("""
+                
+                
+                
+                
+                
+                """);
         return receipts;
     }
 }
