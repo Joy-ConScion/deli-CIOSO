@@ -25,17 +25,15 @@ public class Sandwich extends MenuItem {
         this.isToasted = toasted;
     }
 
-    HashMap<String, String> Size = new HashMap<>();
-
-    {
-        Size.put("small", "S");
-        Size.put("regular", "M");
-        Size.put("large", "L");
+    static HashMap<String, String> Size = new HashMap<>();
+    static {
+        Size.put("Small", "S");
+        Size.put("Regular", "M");
+        Size.put("Large", "L");
     }
 
-    List<String> breads = new ArrayList<>();
-
-    public void breads() {
+    static List<String> breads = new ArrayList<>();
+    {
         breads.add("white");
         breads.add("wheat");
         breads.add("rye");
@@ -43,15 +41,18 @@ public class Sandwich extends MenuItem {
 
     }
 
-    List<String> sizes = new ArrayList<>();
-
-    public void size() {
-        sizes.add("small");
-        sizes.add("regular");
-        sizes.add("large");
+    static List<String> sizes = new ArrayList<>();
+    static {
+        sizes.add("Small");
+        sizes.add("Regular");
+        sizes.add("Large");
     }
 
-public boolean isToasted(){
+    public static List<String> getSizes() {
+        return sizes;
+    }
+
+    public boolean isToasted(){
     boolean isToasted = true;
     return isToasted;
     }

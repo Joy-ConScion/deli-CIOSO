@@ -14,9 +14,9 @@ public class Beverage extends MenuItem {
         this.beverageType = beverageType;
     }
 
-    List<String> beverages = new ArrayList<>();
+    private static List<String> beverages = new ArrayList<>();
 
-    public void beverageType() {
+    static {
         beverages.add("coke");
         beverages.add("dr pep");
         beverages.add("orange");
@@ -26,4 +26,7 @@ public class Beverage extends MenuItem {
         beverages.add("sweet tea");
     }
 
+    public static List<String> getBeverages() {
+        return beverages;
+    }
 }

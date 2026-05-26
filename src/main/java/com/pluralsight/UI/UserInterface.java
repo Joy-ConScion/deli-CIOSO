@@ -1,5 +1,8 @@
 package com.pluralsight.UI;
 
+import com.pluralsight.Models.Beverage;
+import com.pluralsight.Models.Sandwich;
+
 import java.util.Scanner;
 
 public interface UserInterface {
@@ -35,7 +38,7 @@ public interface UserInterface {
                 """);
         int size = Integer.parseInt(keyboard.nextLine());
 
-
+        System.out.println("");
 
 
 
@@ -52,6 +55,22 @@ public interface UserInterface {
     }
 
     public static void buildABeverage(){
+
+        System.out.println("""
+                -----------------------
+                Beverages
+                -----------------------
+                
+                Pick a size:""");
+        System.out.println(Sandwich.getSizes());
+        String sizeChoice = (keyboard.nextLine());
+        System.out.println("Now choose your drink: ");
+        System.out.println(Beverage.getBeverages());
+        String drinkChoice = keyboard.nextLine();
+        System.out.println("Are these selections correct? " + drinkChoice + " | " + sizeChoice);
+        System.out.println("Y/N");
+        String correctChoice = (keyboard.nextChar());
+
 
     }
 
