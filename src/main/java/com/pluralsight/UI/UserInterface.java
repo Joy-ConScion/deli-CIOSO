@@ -31,7 +31,7 @@ public interface UserInterface {
     public static void buildASandwich(){
         System.out.println("""
                 ---------------------------------------
-                Beginning sandwich creation proccess...
+                Beginning sandwich creation process...
                 ---------------------------------------
                 
                 Choose your sandwich size (Options: 4in, 8in or 12in): 
@@ -54,28 +54,49 @@ public interface UserInterface {
 
     }
 
-    public static void buildABeverage(){
+    public static Beverage buildABeverage() {
 
-        System.out.println("""
-                -----------------------
-                Beverages
-                -----------------------
-                
-                Pick a size:""");
-        System.out.println(Sandwich.getSizes());
-        String sizeChoice = (keyboard.nextLine());
-        System.out.println("Now choose your drink: ");
-        System.out.println(Beverage.getBeverages());
-        String drinkChoice = keyboard.nextLine();
-        System.out.println("Are these selections correct? " + drinkChoice + " | " + sizeChoice);
-        System.out.println("Y/N");
-        String correctChoice = (keyboard.nextChar());
+        boolean buildABeverage = false;
 
+        while (!buildABeverage) {
 
+            System.out.println("""
+                    -----------------------
+                    Beverages
+                    -----------------------
+                    
+                    Pick a size:""");
+            System.out.println(Sandwich.getSizes());
+            String sizeChoice = (keyboard.nextLine());
+
+            System.out.println("Now choose your drink: ");
+            System.out.println(Beverage.getBeverages());
+            String drinkChoice = keyboard.nextLine();
+
+            System.out.println("Are these selections correct? " + drinkChoice + " | " + sizeChoice);
+            System.out.println("Y/N");
+            String correctChoice = keyboard.nextLine();
+
+            if (correctChoice.equalsIgnoreCase("y")) {
+                buildABeverage = true;
+                System.out.println("""
+                        
+                        Drink added to order!
+                        
+                        """);
+                return beverage;
+
+            } else {
+                System.out.println("-----Restarting Build-A-Bev!-----");
+            }
+
+        }
+
+        public static void buildASide () {
+
+        }
     }
 
-    public static void buildASide(){
 
-    }
 
 }

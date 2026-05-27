@@ -6,12 +6,10 @@ import java.util.List;
 public class Beverage extends MenuItem {
 
     private String size;
-    private String beverageType;
 
-    public Beverage(String name, double price, String size, String beverageType) {
+    public Beverage(String name, double price, String size, ) {
         super(name, price);
         this.size = size;
-        this.beverageType = beverageType;
     }
 
     private static List<String> beverages = new ArrayList<>();
