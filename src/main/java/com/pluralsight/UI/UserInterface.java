@@ -66,7 +66,7 @@ public class UserInterface {
         while (isOrderScreenRunning) {
 
             System.out.println("""
-                    -----------
+                    -------------
                     Where should we start?!?
                     -------------
                     
@@ -104,36 +104,48 @@ public class UserInterface {
                 
                 Choose your sandwich size (Options: 4in, 8in or 12in):
                 """);
-
+        String sandwichSize = keyboard.nextLine();
     }
 
 
     public void buildABeverageScreen() {
+
         System.out.println("""
-                What drink would you like?
+                    Let's set you up with your drink...
+                    Which flavor would you like?
                 
-                A) Coke
-                B) Dr.pepper
-                C) Orange
-                D) Sport
-                E) Lemon-lime
-                F) Lemonade
-                G) Sweet tea
-               
+                    A) Coke
+                    B) Dr.Pepper
+                    C) Orange
+                    D) Sport
+                    E) Lemon-lime
+                    F) Lemonade
+                    G) Sweet tea
+                
                 """);
         char beverageChoice = keyboard.next().charAt(0);
         switch (beverageChoice){
             case 'A' :
-                String = new Beverage();
+                String flavorChoice = "Coke";
+            case 'B' :
+                flavorChoice = "Dr.Pepper";
+            case 'C' :
+                flavorChoice = "Orange";
+            case 'D' :
+                flavorChoice = "Sport";
+            case 'E' :
+                flavorChoice = "Lemon-Lime";
+            case 'F' :
+                flavorChoice = "Lemonade";
+            case 'G' :
+                flavorChoice = "Sweet Tea";
         }
 
         System.out.println("""
-                Let's set up with your drink
-                
-                Please choose size:
-                A) Small - $2.00
-                B) Medium - $2.50
-                C) Large - $3.00
+                    Please choose size:
+                    A) Small - $2.00
+                    B) Medium - $2.50
+                    C) Large - $3.00
                 """);
         char sizeChoice = keyboard.next().charAt(0);
 
@@ -148,8 +160,18 @@ public class UserInterface {
                  drinkSize = "Large";
                 break;
         }
-
-
+        System.out.println("    Are these selections correct? " + flavorChoice + " | " + drinkSize);
+        System.out.println("    Y/N");
+        String correctChoice = keyboard.nextLine();
+        if (correctChoice.equalsIgnoreCase("y")) {
+            System.out.println("""
+                    Your beverage was added to your order!
+                """);
+//            return new beverage
+        }
+        else {System.out.println("  -----Restarting Build-A-Bev!-----");
+            buildABeverageScreen();
+        }
     }
 
 
@@ -164,68 +186,3 @@ public class UserInterface {
     }
 
 }
-
-//public static void buildASandwich(){
-//            System.out.println("""
-//                ---------------------------------------
-//                Beginning sandwich creation process...
-//                ---------------------------------------
-//
-//                Choose your sandwich size (Options: 4in, 8in or 12in):
-//                """);
-//            int size = Integer.parseInt(keyboard.nextLine());
-//
-//            System.out.println("");
-//
-//
-//
-//        }
-
-//        public static Beverage buildABeverage() {
-//
-//            boolean buildABeverage = false;
-//
-//            while (!buildABeverage) {
-//
-//                System.out.println("""
-//                    -----------------------
-//                    Beverages
-//                    -----------------------
-//
-//                    Pick a size:""");
-//                System.out.println(Sandwich.getSizes());
-//                String sizeChoice = (keyboard.nextLine());
-//
-//                System.out.println("Now choose your drink: ");
-//                System.out.println(Beverage.getBeverages());
-//                String drinkChoice = keyboard.nextLine();
-//
-//                System.out.println("Are these selections correct? " + drinkChoice + " | " + sizeChoice);
-//                System.out.println("Y/N");
-//                String correctChoice = keyboard.nextLine();
-//
-//                if (correctChoice.equalsIgnoreCase("y")) {
-//                    buildABeverage = true;
-//                    System.out.println("""
-//
-//                        Drink added to order!
-//
-//                        """);
-/// /                    return beverage;
-//
-//                } else {
-//                    System.out.println("-----Restarting Build-A-Bev!-----");
-//                }
-//
-//            }
-
-/// /            public static Sides buildASide() {
-//                return 0;
-//            }
-//        }
-
-
-
-
-
-
