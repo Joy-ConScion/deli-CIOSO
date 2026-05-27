@@ -169,8 +169,92 @@ public class UserInterface {
                 I) Mushrooms
                 
                 """);
+        char sandwichToppings = keyboard.next().charAt(0);
+        String toppingChoice = switch (sandwichToppings) {
+            case 'A', 'a' -> "Lettuce";
+            case 'B', 'b' -> "Peppers";
+            case 'C', 'c' -> "Onions";
+            case 'D', 'd' -> "Tomatoes";
+            case 'E', 'e' -> "Jalapenos";
+            case 'F', 'f' -> "Cucumbers";
+            case 'G', 'g' -> "Pickles";
+            case 'H', 'h' -> "Guacamole";
+            case 'I', 'i' -> "Mushrooms";
+            default -> throw new IllegalStateException("Unexpected value: " + sandwichToppings);
+        };
+
+        System.out.println("""
+                Let's get cheesey in here!
+                
+                A) American
+                B) Provolone
+                C) Cheddar
+                D) Swiss
+                
+                """);
+        char sandwichCheese = keyboard.next().charAt(0);
+        String quesoChoice = switch (sandwichCheese) {
+            case 'A', 'a' -> "American";
+            case 'B', 'b' -> "Provolone";
+            case 'C', 'c' -> "Cheddar";
+            case 'D', 'd' -> "Swiss";
+            default -> throw new IllegalStateException("Unexpected value: " + sandwichCheese);
+        };
+
+        System.out.println("""
+                Where da sauces at!?
+                
+                A) Mayo
+                B) Mustard
+                C) Ketchup
+                D) Ranch
+                E) Thousand Island
+                F) Vinaigrette
+                
+                """);
+        char sandwichSauce = keyboard.next().charAt(0);
+        String sauceChoice = switch (sandwichSauce) {
+            case 'A', 'a' -> "Mayo";
+            case 'B', 'b' -> "Mustard";
+            case 'C', 'c' -> "Ketchup";
+            case 'D', 'd' -> "Ranch";
+            case 'E', 'e' -> "Thousand Island";
+            case 'F', 'f' -> "Vinaigrette";
+            default -> throw new IllegalStateException("Unexpected value: " + sandwichSauce);
+        };
+
+        System.out.println("""
+                
+                But do you want it toasted?
+                Simply let us know!
+                Yes/No
+                
+                """);
+        String toastedChoice = keyboard.nextLine();
 
 
+        System.out.println("        Are these selections correct? " + inchChoice + " | "
+                           + breadChoice + " | "
+                           + meatChoice + " | "
+                           + toppingChoice + " | "
+                           + quesoChoice + " | "
+                           + sauceChoice + " | "
+                           + toastedChoice + " | "
+
+        );
+
+        String correctChoice = keyboard.nextLine();
+        if (correctChoice.equalsIgnoreCase("yes") || correctChoice.equalsIgnoreCase("y")) {
+            System.out.println("""
+                            This personally crafted masterpiece has been added to your order!
+                    """);
+            //            return new beverage
+            displayOrderScreen();
+        }
+        if (correctChoice.equalsIgnoreCase("no") || correctChoice.equalsIgnoreCase("n")) {
+            System.out.println("      -----Restarting Build-A-Sandwich!-----");
+            buildASandwichScreen();
+        }
     }
 
 
