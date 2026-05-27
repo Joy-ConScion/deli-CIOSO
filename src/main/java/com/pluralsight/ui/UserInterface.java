@@ -102,6 +102,7 @@ public class UserInterface {
                 ---------------------------------------
                 
                 Choose your sandwich size from the options below:
+                
                 A) 4' in
                 B) 8' in
                 C) 12' in
@@ -114,6 +115,60 @@ public class UserInterface {
             default -> throw new IllegalStateException("Unexpected value: " + sandwichSize);
         };
 
+        System.out.println("""
+                Preferred bread type? 
+                
+                A) White
+                B) Wheat
+                C) Rye
+                D) Wrap
+                
+                """);
+        char sandwichType = keyboard.next().charAt(0);
+        String breadChoice = switch (sandwichType) {
+            case 'A', 'a' -> "White";
+            case 'B', 'b' -> "Wheat";
+            case 'C', 'c' -> "Rye";
+            case 'D', 'd' -> "Wrap";
+            default -> throw new IllegalStateException("Unexpected value: " + sandwichType);
+        };
+
+        System.out.println("""
+                We have your favourite meats, now you must choose just one.
+                
+                A) Steak
+                B) Ham
+                C) Salami
+                D) Roast Beef
+                E) Chicken
+                F) Bacon
+                
+                """);
+        char sandwichMeat = keyboard.next().charAt(0);
+        String meatChoice = switch (sandwichMeat) {
+            case 'A', 'a' -> "Steak";
+            case 'B', 'b' -> "Ham";
+            case 'C', 'c' -> "Salami";
+            case 'D', 'd' -> "Roast Beef";
+            case 'E', 'e' -> "Chicken";
+            case 'F', 'f' -> "Bacon";
+            default -> throw new IllegalStateException("Unexpected value: " + sandwichMeat);
+        };
+
+        System.out.println("""
+                How would you like to top this Super-Sandwich?
+                
+                A) Lettuce
+                B) Peppers
+                C) Onions
+                D) Tomatoes
+                E) Jalapenos
+                F) Cucumbers
+                G) Pickles
+                H) Guacamole
+                I) Mushrooms
+                
+                """);
 
 
     }
@@ -149,6 +204,7 @@ public class UserInterface {
 
         System.out.println("""
                         Please choose size:
+                        
                         A) Small - $2.00
                         B) Medium - $2.50
                         C) Large - $3.00
