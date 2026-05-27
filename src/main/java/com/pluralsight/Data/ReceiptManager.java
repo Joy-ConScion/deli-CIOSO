@@ -1,4 +1,4 @@
-package com.pluralsight.Records;
+package com.pluralsight.Data;
 
 import java.io.*;
 import java.time.LocalDate;
