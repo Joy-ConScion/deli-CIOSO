@@ -160,25 +160,53 @@ public class UserInterface {
                  drinkSize = "Large";
                 break;
         }
-        System.out.println("    Are these selections correct? " + flavorChoice + " | " + drinkSize);
+//        System.out.println("    Are these selections correct? " + flavorChoice + " | " + drinkSize);
         System.out.println("    Y/N");
         String correctChoice = keyboard.nextLine();
-        if (correctChoice.equalsIgnoreCase("y")) {
-            System.out.println("""
-                    Your beverage was added to your order!
-                """);
-//            return new beverage
-        }
-        else {System.out.println("  -----Restarting Build-A-Bev!-----");
-            buildABeverageScreen();
-        }
+            if (correctChoice.equalsIgnoreCase("y")) {
+                System.out.println("""
+                        Your beverage was added to your order!
+                    """);
+    //            return new beverage
+                displayOrderScreen();
+            }
+            else {System.out.println("  -----Restarting Build-A-Bev!-----");
+                buildABeverageScreen();
+            }
     }
 
 
     public void buildASideScreen() {
-        System.out.println("More Junk");
+        System.out.println("""
+                Let's grab that side for you...
+                What side would you like?
+                
+                One Size - $1.50
+                vVvVvVvVvVvVv
+                A) Cheetos
+                B) Regular - Potato
+                C) Curly - Potato
+                D) Spicy
+                E) Doritos
+                
+                """);
+        char sideChoice = keyboard.next().charAt(0);
+        switch (sideChoice){
+            case 'A' :
+                String sideOption = "Cheetos";
+            case 'B' :
+                sideOption = "Regular - Potato";
+            case 'C' :
+                sideOption = "Curly - Potato";
+            case 'D' :
+                sideOption = "Spicy";
+            case 'E' :
+                sideOption = "Doritos";
+        }
 
-    }
+
+
+        }
 
 
     public void checkingOutScreen() {
