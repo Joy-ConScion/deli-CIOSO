@@ -60,7 +60,7 @@ public class UserInterface {
 
 
     public void displayOrderScreen() {
-        Beverage drink = new Beverage("","");
+        Beverage drink = new Beverage("", "");
         boolean isOrderScreenRunning = true;
         while (isOrderScreenRunning) {
 
@@ -68,7 +68,7 @@ public class UserInterface {
                         -------------
                         Where should we start?!?
                         -------------
-                        
+                    
                         1) Add Sandwich
                         2) Add Drink
                         3) Add Chips
@@ -123,22 +123,17 @@ public class UserInterface {
                 
                 """);
         char beverageChoice = keyboard.next().charAt(0);
-        switch (beverageChoice){
-            case 'A' :
-                String flavorChoice = "Coke";
-            case 'B' :
-                flavorChoice = "Dr.Pepper";
-            case 'C' :
-                flavorChoice = "Orange";
-            case 'D' :
-                flavorChoice = "Sport";
-            case 'E' :
-                flavorChoice = "Lemon-Lime";
-            case 'F' :
-                flavorChoice = "Lemonade";
-            case 'G' :
-                flavorChoice = "Sweet Tea";
-        }
+
+        String flavorChoice = switch (beverageChoice) {
+            case 'A' -> "Coke";
+            case 'B' -> "Dr.Pepper";
+            case 'C' -> "Orange";
+            case 'D' -> "Sport";
+            case 'E' -> "Lemon-Lime";
+            case 'F' -> "Lemonade";
+            case 'G' -> "Sweet Tea";
+            default -> throw new IllegalStateException("Unexpected value: " + beverageChoice);
+        };
 
         System.out.println("""
                         Please choose size:
@@ -148,31 +143,27 @@ public class UserInterface {
                 """);
         char sizeChoice = keyboard.next().charAt(0);
         keyboard.nextLine();
-        switch (sizeChoice){
-            case 'A' :
-                String drinkSize = "Small";
-                break;
-            case 'B' :
-                drinkSize = "Medium";
-                break;
-            case 'C' :
-                 drinkSize = "Large";
-                break;
-        }
-//        System.out.println("    Are these selections correct? " + flavorChoice + " | " + drinkSize);
+        String drinkSize = switch (sizeChoice) {
+            case 'A' -> "Small";
+            case 'B' -> "Medium";
+            case 'C' -> "Large";
+            default -> throw new IllegalStateException("Unexpected value: " + sizeChoice);
+        };
+
+        System.out.println("    Are these selections correct? " + flavorChoice + " | " + drinkSize);
         System.out.println("        Yes/No");
         String correctChoice = keyboard.nextLine();
-            if (correctChoice.equalsIgnoreCase("yes")) {
-                System.out.println("""
+        if (correctChoice.equalsIgnoreCase("yes")) {
+            System.out.println("""
                             Your beverage was added to your order!
                     """);
-    //            return new beverage
-                displayOrderScreen();
-            }
-            if (correctChoice.equalsIgnoreCase("no")) {
-                System.out.println("      -----Restarting Build-A-Bev!-----");
-                buildABeverageScreen();
-            }
+            //            return new beverage
+            displayOrderScreen();
+        }
+        if (correctChoice.equalsIgnoreCase("no")) {
+            System.out.println("      -----Restarting Build-A-Bev!-----");
+            buildABeverageScreen();
+        }
     }
 
 
@@ -191,22 +182,21 @@ public class UserInterface {
                 
                 """);
         char sideChoice = keyboard.next().charAt(0);
-        switch (sideChoice){
-            case 'A' :
+        switch (sideChoice) {
+            case 'A':
                 String sideOption = "Cheetos";
-            case 'B' :
+            case 'B':
                 sideOption = "Regular - Potato";
-            case 'C' :
+            case 'C':
                 sideOption = "Curly - Potato";
-            case 'D' :
+            case 'D':
                 sideOption = "Spicy";
-            case 'E' :
+            case 'E':
                 sideOption = "Doritos";
         }
 
 
-
-        }
+    }
 
 
     public void checkingOutScreen() {
