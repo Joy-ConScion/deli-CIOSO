@@ -2,6 +2,7 @@ package com.pluralsight.UI;
 
 import com.pluralsight.Models.Beverage;
 import com.pluralsight.Models.Sandwich;
+import com.pluralsight.Models.Sides;
 
 import java.util.Scanner;
 
@@ -92,7 +93,7 @@ public interface UserInterface {
 
         }
 
-        public static void buildASide () {
+        public static Sides buildASide() {
 
         }
     }
