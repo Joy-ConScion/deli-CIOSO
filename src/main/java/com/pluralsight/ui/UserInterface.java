@@ -230,6 +230,7 @@ public class UserInterface {
                 Yes/No
                 
                 """);
+        keyboard.nextLine();
         String toastedChoice = keyboard.nextLine();
 
 
