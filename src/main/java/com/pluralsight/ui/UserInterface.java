@@ -101,9 +101,21 @@ public class UserInterface {
                 Beginning sandwich creation process...
                 ---------------------------------------
                 
-                Choose your sandwich size (Options: 4in, 8in or 12in):
+                Choose your sandwich size from the options below:
+                A) 4' in
+                B) 8' in
+                C) 12' in
                 """);
-        String sandwichSize = keyboard.nextLine();
+        char sandwichSize = keyboard.next().charAt(0);
+        String inchChoice = switch (sandwichSize) {
+            case 'A', 'a' -> "4' in";
+            case 'B', 'b' -> "8' in";
+            case 'C', 'c' -> "12' in";
+            default -> throw new IllegalStateException("Unexpected value: " + sandwichSize);
+        };
+
+
+
     }
 
 
@@ -125,13 +137,13 @@ public class UserInterface {
         char beverageChoice = keyboard.next().charAt(0);
 
         String flavorChoice = switch (beverageChoice) {
-            case 'A' -> "Coke";
-            case 'B' -> "Dr.Pepper";
-            case 'C' -> "Orange";
-            case 'D' -> "Sport";
-            case 'E' -> "Lemon-Lime";
-            case 'F' -> "Lemonade";
-            case 'G' -> "Sweet Tea";
+            case 'A', 'a' -> "Coke";
+            case 'B', 'b' -> "Dr.Pepper";
+            case 'C', 'c' -> "Orange";
+            case 'D', 'd' -> "Sport";
+            case 'E', 'e' -> "Lemon-Lime";
+            case 'F', 'f' -> "Lemonade";
+            case 'G', 'g' -> "Sweet Tea";
             default -> throw new IllegalStateException("Unexpected value: " + beverageChoice);
         };
 
@@ -144,23 +156,23 @@ public class UserInterface {
         char sizeChoice = keyboard.next().charAt(0);
         keyboard.nextLine();
         String drinkSize = switch (sizeChoice) {
-            case 'A' -> "Small";
-            case 'B' -> "Medium";
-            case 'C' -> "Large";
+            case 'A', 'a' -> "Small";
+            case 'B', 'b' -> "Medium";
+            case 'C', 'c' -> "Large";
             default -> throw new IllegalStateException("Unexpected value: " + sizeChoice);
         };
 
-        System.out.println("    Are these selections correct? " + flavorChoice + " | " + drinkSize);
+        System.out.println("        Are these selections correct? " + flavorChoice + " | " + drinkSize);
         System.out.println("        Yes/No");
         String correctChoice = keyboard.nextLine();
-        if (correctChoice.equalsIgnoreCase("yes")) {
+        if (correctChoice.equalsIgnoreCase("yes") || correctChoice.equalsIgnoreCase("y")) {
             System.out.println("""
-                            Your beverage was added to your order!
+                            Your refreshing beverage was added to your order!
                     """);
             //            return new beverage
             displayOrderScreen();
         }
-        if (correctChoice.equalsIgnoreCase("no")) {
+        if (correctChoice.equalsIgnoreCase("no") || correctChoice.equalsIgnoreCase("n")) {
             System.out.println("      -----Restarting Build-A-Bev!-----");
             buildABeverageScreen();
         }
@@ -169,32 +181,41 @@ public class UserInterface {
 
     public void buildASideScreen() {
         System.out.println("""
-                Let's grab that side for you...
-                What side would you like?
+                        Let's grab that side for you...
+                        What side would you like?
                 
-                One Size - $1.50
-                vVvVvVvVvVvVv
-                A) Cheetos
-                B) Regular - Potato
-                C) Curly - Potato
-                D) Spicy
-                E) Doritos
+                        One Size - $1.50
+                        vVvVvVvVvVvVv
+                        A) Cheetos
+                        B) Regular - Potato
+                        C) Curly - Potato
+                        D) Spicy
+                        E) Doritos
                 
                 """);
         char sideChoice = keyboard.next().charAt(0);
-        switch (sideChoice) {
-            case 'A':
-                String sideOption = "Cheetos";
-            case 'B':
-                sideOption = "Regular - Potato";
-            case 'C':
-                sideOption = "Curly - Potato";
-            case 'D':
-                sideOption = "Spicy";
-            case 'E':
-                sideOption = "Doritos";
+        String sideOption = switch (sideChoice) {
+            case 'A', 'a' -> "Cheetos";
+            case 'B', 'b' -> "Regular - Potato";
+            case 'C', 'c' -> "Curly - Potato";
+            case 'D', 'd' -> "Spicy";
+            case 'E', 'e' -> "Doritos";
+            default -> throw new IllegalStateException("Unexpected value: " + sideChoice);
+        };
+        System.out.println("        Is this your correct choice? " + sideOption );
+        System.out.println("        Yes/No");
+        String correctChoice = keyboard.nextLine();
+        if (correctChoice.equalsIgnoreCase("yes") || correctChoice.equalsIgnoreCase("y")) {
+            System.out.println("""
+                            Your scrumptious side was added to your order!
+                    """);
+            //            return new side
+            displayOrderScreen();
         }
-
+        if (correctChoice.equalsIgnoreCase("no") || correctChoice.equalsIgnoreCase("n")) {
+            System.out.println("      -----Restarting Build-A-Side!-----");
+            buildASideScreen();
+        }
 
     }
 
