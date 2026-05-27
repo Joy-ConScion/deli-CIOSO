@@ -66,15 +66,15 @@ public class UserInterface {
         while (isOrderScreenRunning) {
 
             System.out.println("""
-                    -------------
-                    Where should we start?!?
-                    -------------
-                    
-                    1) Add Sandwich
-                    2) Add Drink
-                    3) Add Chips
-                    4) Checkout
-                    0) Cancel Order
+                        -------------
+                        Where should we start?!?
+                        -------------
+                        
+                        1) Add Sandwich
+                        2) Add Drink
+                        3) Add Chips
+                        4) Checkout
+                        0) Cancel Order
                     
                     
                     """);
@@ -111,16 +111,16 @@ public class UserInterface {
     public void buildABeverageScreen() {
 
         System.out.println("""
-                    Let's set you up with your drink...
-                    Which flavor would you like?
+                        Let's set you up with your drink...
+                        Which flavor would you like?
                 
-                    A) Coke
-                    B) Dr.Pepper
-                    C) Orange
-                    D) Sport
-                    E) Lemon-lime
-                    F) Lemonade
-                    G) Sweet tea
+                        A) Coke
+                        B) Dr.Pepper
+                        C) Orange
+                        D) Sport
+                        E) Lemon-lime
+                        F) Lemonade
+                        G) Sweet tea
                 
                 """);
         char beverageChoice = keyboard.next().charAt(0);
@@ -142,13 +142,13 @@ public class UserInterface {
         }
 
         System.out.println("""
-                    Please choose size:
-                    A) Small - $2.00
-                    B) Medium - $2.50
-                    C) Large - $3.00
+                        Please choose size:
+                        A) Small - $2.00
+                        B) Medium - $2.50
+                        C) Large - $3.00
                 """);
         char sizeChoice = keyboard.next().charAt(0);
-
+        keyboard.nextLine();
         switch (sizeChoice){
             case 'A' :
                 String drinkSize = "Small";
@@ -161,16 +161,17 @@ public class UserInterface {
                 break;
         }
 //        System.out.println("    Are these selections correct? " + flavorChoice + " | " + drinkSize);
-        System.out.println("    Y/N");
+        System.out.println("        Yes/No");
         String correctChoice = keyboard.nextLine();
-            if (correctChoice.equalsIgnoreCase("y")) {
+            if (correctChoice.equalsIgnoreCase("yes")) {
                 System.out.println("""
-                        Your beverage was added to your order!
+                            Your beverage was added to your order!
                     """);
     //            return new beverage
                 displayOrderScreen();
             }
-            else {System.out.println("  -----Restarting Build-A-Bev!-----");
+            if (correctChoice.equalsIgnoreCase("no")) {
+                System.out.println("      -----Restarting Build-A-Bev!-----");
                 buildABeverageScreen();
             }
     }
@@ -211,6 +212,11 @@ public class UserInterface {
 
     public void checkingOutScreen() {
         System.out.println("Exclusive Junk");
+//      System.out.println("Below are your selected items. Ensure the order is correct before finalizing.");
+//      System.out.println(""
+//
+//
+//      "");
     }
 
 }
