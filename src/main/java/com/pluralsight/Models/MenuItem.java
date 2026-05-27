@@ -9,6 +9,11 @@ public class MenuItem {
         this.name = name;
         this.price = price;
     }
+    public MenuItem(String name){
+        this.name = name;
+        this.price = 0;
+    }
+
 
     public String getName() {
         return name;

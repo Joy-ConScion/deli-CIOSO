@@ -6,25 +6,40 @@ import java.util.List;
 public class Beverage extends MenuItem {
 
     private String size;
+    static double smallBeveragePrice = 2.00;
+    static double mediumBeveragePrice = 2.50;
+    static double largeBeveragePrice = 3.00;
 
-    public Beverage(String name, double price, String size) {
-        super(name, price);
+    public Beverage(String name, String size) {
+        super(name);
         this.size = size;
     }
 
-    private static List<String> beverages = new ArrayList<>();
-
-    static {
-        beverages.add("coke");
-        beverages.add("dr pep");
-        beverages.add("orange");
-        beverages.add("sport");
-        beverages.add("lemon-lime");
-        beverages.add("lemonade");
-        beverages.add("sweet tea");
+    public String getSize() {
+        return size;
     }
 
-    public static List<String> getBeverages() {
-        return beverages;
+    public void setSize(String size) {
+        this.size = size;
     }
+
+
+
+    @Override
+    public double getPrice(){
+        if (size == null) return 0;
+
+        return switch (size){
+            case "Small" -> smallBeveragePrice;
+            case "Medium" -> mediumBeveragePrice;
+            case "Large" -> largeBeveragePrice;
+            default -> 0.00;
+
+        };
+
+    }
+
+
 }
+
+
