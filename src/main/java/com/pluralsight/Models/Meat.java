@@ -8,12 +8,12 @@ public class Meat {
     List<String> meats = new ArrayList<>();
 
     public Meat() {
-        meats.add("steak");
-        meats.add("ham");
-        meats.add("salami");
-        meats.add("roastBeef");
-        meats.add("chicken");
-        meats.add("bacon");
+        meats.add("Steak");
+        meats.add("Ham");
+        meats.add("Salami");
+        meats.add("RoastBeef");
+        meats.add("Chicken");
+        meats.add("Bacon");
 
     }
 }

@@ -41,15 +41,10 @@ public class UserInterface {
                                       (_ \\ |       \s
                            mrf_________\\\\/'|
                     
-                    -------------
-                    Deli-coiso 
-                    -------------
-                    munchies realities
-                    
+                    "Where we turn your munchies into realities"
+                    vVvVvVvVvVvVvVvVvVvVvVvVv
                     1) New Order
                     2) Exit
-                    
-                    
                     """);
             int choice = keyboard.nextInt();
 
@@ -66,7 +61,7 @@ public class UserInterface {
 
 
     public void displayOrderScreen() {
-        Beverage drink = new Beverage("",0,null);
+        Beverage drink = new Beverage("","");
         boolean isOrderScreenRunning = true;
         while (isOrderScreenRunning) {
 
@@ -89,7 +84,7 @@ public class UserInterface {
             switch (secondChoice) {
 
                 case 1 -> buildASandwichScreen();
-                case 2 -> buildABeverageScreen(drink);
+                case 2 -> buildABeverageScreen();
                 case 3 -> buildASideScreen();
                 case 4 -> checkingOutScreen();
                 case 0 -> isOrderScreenRunning = false;
@@ -113,8 +108,7 @@ public class UserInterface {
     }
 
 
-    public void buildABeverageScreen(Beverage drink) {
-        drink = new Beverage();
+    public void buildABeverageScreen() {
         System.out.println("""
                 What drink would you like?
                 
@@ -130,11 +124,11 @@ public class UserInterface {
         char beverageChoice = keyboard.next().charAt(0);
         switch (beverageChoice){
             case 'A' :
-                drink = new Beverage()
+                String = new Beverage();
         }
 
         System.out.println("""
-                Let's get you set up with your drink
+                Let's set up with your drink
                 
                 Please choose size:
                 A) Small - $2.00
@@ -145,12 +139,15 @@ public class UserInterface {
 
         switch (sizeChoice){
             case 'A' :
-                drink.setSize("Small");
-                System.out.println(drink.getPrice());
+                String drinkSize = "Small";
+                break;
+            case 'B' :
+                drinkSize = "Medium";
+                break;
+            case 'C' :
+                 drinkSize = "Large";
                 break;
         }
-
-
 
 
     }

@@ -34,10 +34,10 @@ public class Sandwich extends MenuItem {
 
     static List<String> breads = new ArrayList<>();
     {
-        breads.add("white");
-        breads.add("wheat");
-        breads.add("rye");
-        breads.add("wrap");
+        breads.add("White");
+        breads.add("Wheat");
+        breads.add("Rye");
+        breads.add("Wrap");
 
     }
 

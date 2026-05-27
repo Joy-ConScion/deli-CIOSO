@@ -16,11 +16,11 @@ public class Sides extends MenuItem{
     List<String> chips = new ArrayList<>();
 
     public void chipType() {
-        chips.add("cheetos");
-        chips.add("regular potato");
-        chips.add("curly potato");
-        chips.add("spicy");
-        chips.add("doritos");
+        chips.add("Cheetos");
+        chips.add("Regular - Potato");
+        chips.add("Curly - Potato");
+        chips.add("Spicy");
+        chips.add("Doritos");
     }
 
 

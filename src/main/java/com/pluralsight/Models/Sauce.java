@@ -8,12 +8,12 @@ public class Sauce {
     List<String> sauces = new ArrayList<>();
 
     public Sauce() {
-        sauces.add("mayo");
-        sauces.add("mustard");
-        sauces.add("ketchup");
-        sauces.add("ranch");
-        sauces.add("thousandIsland");
-        sauces.add("vinaigrette");
+        sauces.add("Mayo");
+        sauces.add("Mustard");
+        sauces.add("Ketchup");
+        sauces.add("Ranch");
+        sauces.add("Thousand Island");
+        sauces.add("Vinaigrette");
 
     }
 

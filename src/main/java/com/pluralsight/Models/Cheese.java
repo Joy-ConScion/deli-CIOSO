@@ -8,10 +8,10 @@ public class Cheese {
     List<String> cheesy = new ArrayList<>();
 
     public Cheese() {
-        cheesy.add("american");
-        cheesy.add("provolone");
-        cheesy.add("cheddar");
-        cheesy.add("swiss");
+        cheesy.add("American");
+        cheesy.add("Provolone");
+        cheesy.add("Cheddar");
+        cheesy.add("Swiss");
     }
 
 }
