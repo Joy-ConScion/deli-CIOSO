@@ -1,6 +1,6 @@
 package com.pluralsight;
 
-import com.pluralsight.UI.UserInterface;
+import com.pluralsight.ui.UserInterface;
 
 public class App {
 

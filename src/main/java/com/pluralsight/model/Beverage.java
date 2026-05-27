@@ -1,7 +1,4 @@
-package com.pluralsight.Models;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.pluralsight.model;
 
 public class Beverage extends MenuItem {
 

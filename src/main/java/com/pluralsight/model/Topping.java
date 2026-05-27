@@ -1,4 +1,4 @@
-package com.pluralsight.Models;
+package com.pluralsight.model;
 
 public class Topping {
 

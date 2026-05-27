@@ -1,6 +1,4 @@
-package com.pluralsight.Models;
-
-import com.pluralsight.UI.UserInterface;
+package com.pluralsight.model;
 
 import java.util.ArrayList;
 import java.util.List;

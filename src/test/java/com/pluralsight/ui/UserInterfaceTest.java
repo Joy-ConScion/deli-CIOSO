@@ -1,11 +1,9 @@
-package com.pluralsight.UI;
+package com.pluralsight.ui;
 
-import com.pluralsight.Models.Beverage;
-import com.pluralsight.Models.Sandwich;
+import com.pluralsight.model.Beverage;
+import com.pluralsight.model.Sandwich;
 
 import java.util.Scanner;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class UserInterfaceTest {
 
