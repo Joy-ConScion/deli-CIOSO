@@ -453,7 +453,7 @@ public class UserInterface {
         System.out.println("""
                 And here's your total
                 
-                """);
+                """ + currentCustomOrder.calculateTotal());
 
 //        Code for showing total amount due no taxes
 
