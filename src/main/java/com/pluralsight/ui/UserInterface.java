@@ -298,17 +298,27 @@ public class UserInterface {
         String toastedChoice = keyboard.nextLine().trim();
         boolean toasted = toastedChoice.equalsIgnoreCase("yes")|| toastedChoice.equalsIgnoreCase("y");
 
-        System.out.println("        Are these selections correct? Enter yes or no. "
-                + inchChoice + " | "
-                + breadChoice + " | "
-                + meatChoice + " | "
-                + toppingChoice + " | "
-                + quesoChoice + " | "
-                + sauceChoice + " | "
-                + toastedChoice + " | "
+        System.out.println("""
+                        Are these selections correct?  
+                """);
+        System.out.println(""
+                + inchChoice + "  |  "
+                + breadChoice + "  |  "
+                + meatChoice + "  |  "
+                + toppingChoice + "  |  "
+                + quesoChoice + "  |  "
+                + sauceChoice + "  |  "
+                + toastedChoice + "  |  "
 
         );
-        System.out.println("        Extra status: " + extraMeatChoice + " & " + extraQuesoChoice);
+        System.out.println("""
+                        
+                        
+                        Enter yes or no below.
+                        The extras status: 
+                """);
+        System.out.println("" + extraMeatChoice + "  &  " + extraQuesoChoice);
+        System.out.println(" ");
         String correctChoice = keyboard.next().trim();
 
         if (correctChoice.equalsIgnoreCase("yes") || correctChoice.equalsIgnoreCase("y")) {
@@ -388,9 +398,11 @@ public class UserInterface {
         String correctChoice = keyboard.nextLine().trim();
         if (correctChoice.equalsIgnoreCase("yes") || correctChoice.equalsIgnoreCase("y")) {
             System.out.println("""
+                            
                             *************************************************
                             Your refreshing beverage was added to your order!
                             *************************************************
+                            
                     """);
             Beverage beverage = new Beverage(flavorChoice, drinkSize);
             currentCustomOrder.addItem(beverage);
@@ -462,29 +474,36 @@ public class UserInterface {
 
     public void checkingOutScreen() {
         System.out.println("""
-                Hope you found everything A-OKAY! 
-                
+                 
+                ----------------
+                -------|Hope you found everything A-OKAY!
+                -------|Let's get you checked out
+                ----------------
+                 
                 Below we have your order. Ensure it's up to your standards and we'll cure your hunger right away.
-                
                 
                 """);
 
         System.out.println(">>>" + currentCustomOrder.getCustomOrder() + "<<<");
         System.out.println("""
+                
                 And here's your total
                 
-                """ + currentCustomOrder.calculateTotal());
+                """);
+        System.out.println("<<<[$" + currentCustomOrder.calculateTotal() + "]>>>");
 
-//        Code for showing total amount due no taxes
-
-        System.out.println("Finalize your order and you're set!");
-
-//        copy earlier code for confirm/deny
+        System.out.println("""
+                Finalize your order by confirming and you're set!
+                
+                Yes) Finalize
+                No) Cancel & Go Back
+                
+                """);
         keyboard.nextLine();
         String finalChoice = keyboard.nextLine().trim();
         if (finalChoice.equalsIgnoreCase("yes") || finalChoice.equalsIgnoreCase("y")) {
             System.out.println("""
-                            Order being prepared for pickup!
+                            Order being prepared for pickup! Thanks for dining with us and take care!
                     """);
 //            Receipt creation code here
 

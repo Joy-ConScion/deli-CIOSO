@@ -26,21 +26,4 @@ public class Sides extends MenuItem{
         return chipType + " " +  " $" + getPrice();
     }
 
-//    public Sides(String name, double price, String chipType, List<String> chips) {
-//        super(name, price);
-//        this.chipType = chipType;
-//        this.chips = chips;
-//    }
-//
-//    List<String> chips = new ArrayList<>();
-//
-//    public void chipType() {
-//        chips.add("Cheetos");
-//        chips.add("Regular - Potato");
-//        chips.add("Curly - Potato");
-//        chips.add("Spicy");
-//        chips.add("Doritos");
-//    }
-
-
 }
