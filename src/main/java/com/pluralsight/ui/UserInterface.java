@@ -322,7 +322,8 @@ public class UserInterface {
 
         System.out.println("        Are these selections correct? " + flavorChoice + " | " + drinkSize);
         System.out.println("        Yes/No");
-        String correctChoice = keyboard.nextLine();
+        keyboard.nextLine();
+        String correctChoice = keyboard.nextLine().trim();
         if (correctChoice.equalsIgnoreCase("yes") || correctChoice.equalsIgnoreCase("y")) {
             System.out.println("""
                             Your refreshing beverage was added to your order!
@@ -363,7 +364,8 @@ public class UserInterface {
         };
         System.out.println("        Is this your correct choice? " + sideOption);
         System.out.println("        Yes/No");
-        String correctChoice = keyboard.nextLine();
+        keyboard.nextLine();
+        String correctChoice = keyboard.nextLine().trim();
         if (correctChoice.equalsIgnoreCase("yes") || correctChoice.equalsIgnoreCase("y")) {
             System.out.println("""
                             Your scrumptious side was added to your order!
