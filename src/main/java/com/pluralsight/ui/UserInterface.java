@@ -2,6 +2,8 @@ package com.pluralsight.ui;
 
 import com.pluralsight.model.Beverage;
 import com.pluralsight.model.Order;
+import com.pluralsight.model.Sandwich;
+import com.pluralsight.model.Sides;
 
 import java.util.Scanner;
 
@@ -237,8 +239,8 @@ public class UserInterface {
                 
                 """);
         keyboard.nextLine();
-        String toastedChoice = keyboard.nextLine();
-
+        String toastedChoice = keyboard.nextLine().trim();
+        boolean toasted = toastedChoice.equalsIgnoreCase("yes")|| toastedChoice.equalsIgnoreCase("y");
 
         System.out.println("        Are these selections correct? " + inchChoice + " | "
                 + breadChoice + " | "
@@ -249,13 +251,22 @@ public class UserInterface {
                 + toastedChoice + " | "
 
         );
+        String correctChoice = keyboard.next().trim();
 
-        String correctChoice = keyboard.nextLine();
         if (correctChoice.equalsIgnoreCase("yes") || correctChoice.equalsIgnoreCase("y")) {
             System.out.println("""
                             This personally crafted masterpiece has been added to your order!
                     """);
-            //            return new beverage
+            Sandwich sandwich = new Sandwich(
+                    inchChoice,
+                    breadChoice,
+                    meatChoice,
+                    toppingChoice,
+                    quesoChoice,
+                    sauceChoice,
+                    toasted
+            );
+            currentCustomOrder.addItem(sandwich);
             displayOrderScreen();
         }
         if (correctChoice.equalsIgnoreCase("no") || correctChoice.equalsIgnoreCase("n")) {
@@ -357,7 +368,8 @@ public class UserInterface {
             System.out.println("""
                             Your scrumptious side was added to your order!
                     """);
-            //            return new side
+            Sides side = new Sides(sideOption);
+            currentCustomOrder.addItem(side);
             displayOrderScreen();
         }
         if (correctChoice.equalsIgnoreCase("no") || correctChoice.equalsIgnoreCase("n")) {
