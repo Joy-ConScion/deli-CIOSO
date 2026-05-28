@@ -23,8 +23,6 @@ public class Sandwich extends MenuItem {
 
     @Override
     public double getPrice() {
-        return 0;
-//        make switch case for size, then meats based off size, then cheese based of size | Extra meat or cheese is later prob
 
         double basePrice = switch (size) {
             case "4' in" -> 5.50;
@@ -33,8 +31,38 @@ public class Sandwich extends MenuItem {
             default -> 0;
         };
 
+        double meatsPrice = switch (size) {
+            case "4' in" -> 1.00;
+            case "8' in" -> 2.00;
+            case "12' in" -> 3.00;
+            default -> 0;
+        };
+
+        double cheesePrice = switch (size) {
+            case "4' in" -> 0.75;
+            case "8' in" -> 1.50;
+            case "12' in" -> 2.25;
+            default -> 0;
+        };
+
+        double extraMeatPrice = switch (size) {
+            case "4' in" -> 0.50;
+            case "8' in" -> 1.00;
+            case "12' in" -> 1.50;
+            default -> 0;
+        };
+
+        double extraCheesePrice = switch (size) {
+            case "4' in" -> 0.30;
+            case "8' in" -> 0.60;
+            case "12' in" -> 0.90;
+            default -> 0;
+        };
+
+        return 0;/*Figure out which to return or how to setup to grab correct*/
 
     }
+
 
 
 }

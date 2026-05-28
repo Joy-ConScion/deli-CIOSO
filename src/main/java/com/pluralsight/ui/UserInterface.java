@@ -391,8 +391,7 @@ public class UserInterface {
                 
                 """);
 
-//        Code for showing order
-
+        System.out.println("Sandwich: " + currentCustomOrder);
         System.out.println("""
                 And here's your total
                 
@@ -400,10 +399,22 @@ public class UserInterface {
 
 //        Code for showing total amount due no taxes
 
-        System.out.println("Confirm your order and you're set!");
+        System.out.println("Finalize your order and you're set!");
 
 //        copy earlier code for confirm/deny
-
+        keyboard.nextLine();
+        String finalChoice = keyboard.nextLine().trim();
+        if (finalChoice.equalsIgnoreCase("yes") || finalChoice.equalsIgnoreCase("y")) {
+            System.out.println("""
+                            Order being prepared for pickup!
+                    """);
+//            Receipt creation code here
+            displayOrderScreen();
+        }
+        if (finalChoice.equalsIgnoreCase("no") || finalChoice.equalsIgnoreCase("n")) {
+            System.out.println("      -----No worries-----");
+            buildASideScreen();
+        }
     }
 
 }
