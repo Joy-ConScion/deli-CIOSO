@@ -59,10 +59,12 @@ public class Sandwich extends MenuItem {
             default -> 0;
         };
 
-        return 0;/*Figure out which to return or how to setup to grab correct*/
-
+        return basePrice + meatsPrice + cheesePrice + extraMeatPrice + extraCheesePrice;
     }
 
-    
+    @Override
+    public String toString() {
+        return size + " " + bread + " " + meat + " " + topping + " " + cheese + " " + sauce + " " + toasted + " " + " $" + getPrice();
+    }
 
 }
