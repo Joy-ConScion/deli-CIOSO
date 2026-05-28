@@ -36,7 +36,10 @@ public class Beverage extends MenuItem {
 
     }
 
-
+    @Override
+    public String toString() {
+        return size + " " + getName() + " $" + getPrice();
+    }
 }
 
 

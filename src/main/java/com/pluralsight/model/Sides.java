@@ -21,6 +21,11 @@ public class Sides extends MenuItem{
         return 1.50;
     }
 
+    @Override
+    public String toString() {
+        return chipType + " " +  " $" + getPrice();
+    }
+
 //    public Sides(String name, double price, String chipType, List<String> chips) {
 //        super(name, price);
 //        this.chipType = chipType;

@@ -19,6 +19,16 @@ public class Order {
         return customOrder;
     }
 
+    public double calculateTotal(){
+
+        double total = 0;
+        
+        for (MenuItem item : customOrder){
+            total += item.getPrice();
+        }
+            return total;
+    }
+
 
 //    private String sandwich;
 //    private String side;

@@ -150,6 +150,7 @@ public class UserInterface {
                 D) Roast Beef
                 E) Chicken
                 F) Bacon
+                G) No meats
                 
                 """);
         char sandwichMeat = keyboard.next().charAt(0);
@@ -160,6 +161,7 @@ public class UserInterface {
             case 'D', 'd' -> "Roast Beef";
             case 'E', 'e' -> "Chicken";
             case 'F', 'f' -> "Bacon";
+            case 'G', 'g' -> "No meats";
             default -> throw new IllegalStateException("Unexpected value: " + sandwichMeat);
         };
 
@@ -175,6 +177,7 @@ public class UserInterface {
                 G) Pickles
                 H) Guacamole
                 I) Mushrooms
+                J) No toppings
                 
                 """);
         char sandwichToppings = keyboard.next().charAt(0);
@@ -188,6 +191,7 @@ public class UserInterface {
             case 'G', 'g' -> "Pickles";
             case 'H', 'h' -> "Guacamole";
             case 'I', 'i' -> "Mushrooms";
+            case 'J', 'j' -> "No toppings";
             default -> throw new IllegalStateException("Unexpected value: " + sandwichToppings);
         };
 
@@ -198,6 +202,7 @@ public class UserInterface {
                 B) Provolone
                 C) Cheddar
                 D) Swiss
+                E) No cheese
                 
                 """);
         char sandwichCheese = keyboard.next().charAt(0);
@@ -206,6 +211,7 @@ public class UserInterface {
             case 'B', 'b' -> "Provolone";
             case 'C', 'c' -> "Cheddar";
             case 'D', 'd' -> "Swiss";
+            case 'E', 'e' -> "No cheese";
             default -> throw new IllegalStateException("Unexpected value: " + sandwichCheese);
         };
 
@@ -218,6 +224,7 @@ public class UserInterface {
                 D) Ranch
                 E) Thousand Island
                 F) Vinaigrette
+                G) No sauce
                 
                 """);
         char sandwichSauce = keyboard.next().charAt(0);
@@ -228,6 +235,7 @@ public class UserInterface {
             case 'D', 'd' -> "Ranch";
             case 'E', 'e' -> "Thousand Island";
             case 'F', 'f' -> "Vinaigrette";
+            case 'G', 'g' -> "No sauce";
             default -> throw new IllegalStateException("Unexpected value: " + sandwichSauce);
         };
 
@@ -242,7 +250,8 @@ public class UserInterface {
         String toastedChoice = keyboard.nextLine().trim();
         boolean toasted = toastedChoice.equalsIgnoreCase("yes")|| toastedChoice.equalsIgnoreCase("y");
 
-        System.out.println("        Are these selections correct? " + inchChoice + " | "
+        System.out.println("        Are these selections correct? Enter yes or no. "
+                + inchChoice + " | "
                 + breadChoice + " | "
                 + meatChoice + " | "
                 + toppingChoice + " | "
@@ -289,6 +298,7 @@ public class UserInterface {
                         E) Lemon-lime
                         F) Lemonade
                         G) Sweet tea
+                        H) No beverage
                 
                 """);
         char beverageChoice = keyboard.next().charAt(0);
@@ -301,6 +311,7 @@ public class UserInterface {
             case 'E', 'e' -> "Lemon-Lime";
             case 'F', 'f' -> "Lemonade";
             case 'G', 'g' -> "Sweet Tea";
+            case 'H', 'h' -> "No beverage";
             default -> throw new IllegalStateException("Unexpected value: " + beverageChoice);
         };
 
@@ -320,8 +331,8 @@ public class UserInterface {
             default -> throw new IllegalStateException("Unexpected value: " + sizeChoice);
         };
 
-        System.out.println("        Are these selections correct? " + flavorChoice + " | " + drinkSize);
-        System.out.println("        Yes/No");
+        System.out.println("        Are these selections correct? " + drinkSize + " " + flavorChoice );
+        System.out.println("        Hit enter, then Yes/No");
         keyboard.nextLine();
         String correctChoice = keyboard.nextLine().trim();
         if (correctChoice.equalsIgnoreCase("yes") || correctChoice.equalsIgnoreCase("y")) {
@@ -351,6 +362,7 @@ public class UserInterface {
                         C) Curly - Potato
                         D) Spicy
                         E) Doritos
+                        F) No sides
                 
                 """);
         char sideChoice = keyboard.next().charAt(0);
@@ -360,6 +372,7 @@ public class UserInterface {
             case 'C', 'c' -> "Curly - Potato";
             case 'D', 'd' -> "Spicy";
             case 'E', 'e' -> "Doritos";
+            case 'F', 'f' -> "No sides";
             default -> throw new IllegalStateException("Unexpected value: " + sideChoice);
         };
         System.out.println("        Is this your correct choice? " + sideOption);
@@ -391,7 +404,7 @@ public class UserInterface {
                 
                 """);
 
-        System.out.println("Sandwich: " + currentCustomOrder);
+        System.out.println(">>>" + currentCustomOrder.getCustomOrder() + "<<<");
         System.out.println("""
                 And here's your total
                 
@@ -409,6 +422,7 @@ public class UserInterface {
                             Order being prepared for pickup!
                     """);
 //            Receipt creation code here
+
             displayOrderScreen();
         }
         if (finalChoice.equalsIgnoreCase("no") || finalChoice.equalsIgnoreCase("n")) {
