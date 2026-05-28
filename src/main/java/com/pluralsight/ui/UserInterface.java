@@ -166,6 +166,30 @@ public class UserInterface {
         };
 
         System.out.println("""
+                Sike, we were just kidding back there. We let you choose up to one more meat (50¢/S, $1.50/M, or $2/L).
+                
+                A) Steak
+                B) Ham
+                C) Salami
+                D) Roast Beef
+                E) Chicken
+                F) Bacon
+                G) No meats
+                
+                """);
+        char extraSandwichMeat = keyboard.next().charAt(0);
+        String extraMeatChoice = switch (extraSandwichMeat) {
+            case 'A', 'a' -> "Steak";
+            case 'B', 'b' -> "Ham";
+            case 'C', 'c' -> "Salami";
+            case 'D', 'd' -> "Roast Beef";
+            case 'E', 'e' -> "Chicken";
+            case 'F', 'f' -> "Bacon";
+            case 'G', 'g' -> "No meats";
+            default -> throw new IllegalStateException("Unexpected value: " + extraSandwichMeat);
+        };
+
+        System.out.println("""
                 How would you like to top this Super-Sandwich?
                 
                 A) Lettuce
@@ -216,6 +240,26 @@ public class UserInterface {
         };
 
         System.out.println("""
+                Wanna get supa cheesey in here?
+                
+                A) American
+                B) Provolone
+                C) Cheddar
+                D) Swiss
+                E) No cheese
+                
+                """);
+        char extraSandwichCheese = keyboard.next().charAt(0);
+        String extraQuesoChoice = switch (extraSandwichCheese) {
+            case 'A', 'a' -> "American";
+            case 'B', 'b' -> "Provolone";
+            case 'C', 'c' -> "Cheddar";
+            case 'D', 'd' -> "Swiss";
+            case 'E', 'e' -> "No cheese";
+            default -> throw new IllegalStateException("Unexpected value: " + extraSandwichCheese);
+        };
+
+        System.out.println("""
                 Where da sauces at!?
                 
                 A) Mayo
@@ -260,6 +304,7 @@ public class UserInterface {
                 + toastedChoice + " | "
 
         );
+        System.out.println("        Extra status: " + extraMeatChoice + " & " + extraQuesoChoice);
         String correctChoice = keyboard.next().trim();
 
         if (correctChoice.equalsIgnoreCase("yes") || correctChoice.equalsIgnoreCase("y")) {
