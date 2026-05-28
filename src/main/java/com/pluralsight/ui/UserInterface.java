@@ -16,11 +16,7 @@ public class UserInterface {
         boolean isRunning = true;
         while (isRunning) {
             System.out.println("""
-                          _
-                       .'   '. \\
-                      :       :
-                      :       :
-                     \\ '. _ .'     _, ?^.-.
+                            _, ?^.-.
                                 oO( _).---.)
                                  o.',####. )
                                 %%\\#######\\\\/ (_ ¡Deli-CIOSO! _)
@@ -59,7 +55,15 @@ public class UserInterface {
                     displayOrderScreen();
                 }
                 case 2 -> isRunning = false;
-                default -> System.out.println("Invalid Input");
+                default -> System.out.println("""
+                        -=-=-
+                        
+                        
+                        Invalid Input
+                        
+                        
+                        -=-=-
+                        """);
 
             }
         }
@@ -73,9 +77,9 @@ public class UserInterface {
         while (isOrderScreenRunning) {
 
             System.out.println("""
-                        -------------
-                        Where should we start?!?
-                        -------------
+                    -----------------
+                    ---|Where should we start?!?
+                    -----------------
                     
                         1) Add Sandwich
                         2) Add Drink
@@ -333,8 +337,10 @@ public class UserInterface {
     public void buildABeverageScreen() {
 
         System.out.println("""
-                        Let's set you up with your drink...
-                        Which flavor would you like?
+                -------------------
+                -------|Let's set you up with your beverage...
+                -------|Please choose a flavor:
+                -------------------
                 
                         A) Coke
                         B) Dr.Pepper
@@ -361,7 +367,7 @@ public class UserInterface {
         };
 
         System.out.println("""
-                        Please choose size:
+                        Please choose a size:
                 
                         A) Small - $2.00
                         B) Medium - $2.50
@@ -382,14 +388,21 @@ public class UserInterface {
         String correctChoice = keyboard.nextLine().trim();
         if (correctChoice.equalsIgnoreCase("yes") || correctChoice.equalsIgnoreCase("y")) {
             System.out.println("""
+                            *************************************************
                             Your refreshing beverage was added to your order!
+                            *************************************************
                     """);
             Beverage beverage = new Beverage(flavorChoice, drinkSize);
             currentCustomOrder.addItem(beverage);
             displayOrderScreen();
         }
         if (correctChoice.equalsIgnoreCase("no") || correctChoice.equalsIgnoreCase("n")) {
-            System.out.println("      -----Restarting Build-A-Bev!-----");
+            System.out.println("""
+                            *****************************
+                          -----Restarting Build-A-Bev!-----
+                            *****************************
+                            
+                    """);
             buildABeverageScreen();
         }
     }
@@ -397,14 +410,21 @@ public class UserInterface {
 
     public void buildASideScreen() {
         System.out.println("""
-                        Let's grab that side for you...
-                        What side would you like?
+                ----------------
+                -------|Let's grab that side for you...
+                -------|What side would you like?
+                ----------------
                 
                         One Size - $1.50
-                        vVvVvVvVvVvVv
-                        A) Cheetos
-                        B) Regular - Potato
-                        C) Curly - Potato
+                           |||||||||||
+                           vVvVvVvVvVv
+                           
+                       =Fries
+                        A) Regular - Potato
+                        B) Curly - Potato
+                        
+                       =Chips
+                        C) Cheetos
                         D) Spicy
                         E) Doritos
                         F) No sides
