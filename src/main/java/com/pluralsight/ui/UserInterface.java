@@ -383,12 +383,27 @@ public class UserInterface {
 
 
     public void checkingOutScreen() {
-        System.out.println("Exclusive Junk");
-//      System.out.println("Below are your selected items. Ensure the order is correct before finalizing.");
-//      System.out.println(""
-//
-//
-//      "");
+        System.out.println("""
+                Hope you found everything A-OKAY! 
+                
+                Below we have your order. Ensure it's up to your standards and we'll cure your hunger right away.
+                
+                
+                """);
+
+//        Code for showing order
+
+        System.out.println("""
+                And here's your total
+                
+                """);
+
+//        Code for showing total amount due no taxes
+
+        System.out.println("Confirm your order and you're set!");
+
+//        copy earlier code for confirm/deny
+
     }
 
 }
