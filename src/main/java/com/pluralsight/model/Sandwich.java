@@ -21,57 +21,20 @@ public class Sandwich extends MenuItem {
         this.toasted = toasted;
     }
 
+    @Override
+    public double getPrice() {
+        return 0;
+//        make switch case for size, then meats based off size, then cheese based of size | Extra meat or cheese is later prob
+
+        double basePrice = switch (size) {
+            case "4' in" -> 5.50;
+            case "8' in" -> 7.00;
+            case "12' in" -> 8.50;
+            default -> 0;
+        };
 
 
-//    private String breadType;
-//    private int size;
-//    public List<Meat> meats;
-//    public List<Topping> topping;
-//    public List<Cheese> cheesy;
-//    public List<Sauce> sauces;
-//    private boolean isToasted;
-//
-//    public Sandwich(String name, double price, String breadType, int size, List<Meat> meats, List<Topping> topping, List<Cheese> cheesy, List<Sauce> sauces, boolean toasted) {
-//        super(name, price);
-//        this.breadType = breadType;
-//        this.size = size;
-//        this.meats = meats;
-//        this.topping = topping;
-//        this.cheesy = cheesy;
-//        this.sauces = sauces;
-//        this.isToasted = toasted;
-//    }
-//
-//    static HashMap<String, String> Size = new HashMap<>();
-//    static {
-//        Size.put("Small", "S");
-//        Size.put("Regular", "M");
-//        Size.put("Large", "L");
-//    }
-//
-//    static List<String> breads = new ArrayList<>();
-//    {
-//        breads.add("White");
-//        breads.add("Wheat");
-//        breads.add("Rye");
-//        breads.add("Wrap");
-//
-//    }
-//
-//    static List<String> sizes = new ArrayList<>();
-//    static {
-//        sizes.add("Small");
-//        sizes.add("Regular");
-//        sizes.add("Large");
-//    }
-//
-//    public static List<String> getSizes() {
-//        return sizes;
-//    }
-//
-//    public boolean isToasted(){
-//    boolean isToasted = true;
-//    return isToasted;
-//    }
+    }
+
 
 }
