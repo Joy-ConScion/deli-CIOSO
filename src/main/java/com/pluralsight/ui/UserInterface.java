@@ -316,7 +316,8 @@ public class UserInterface {
             System.out.println("""
                             Your refreshing beverage was added to your order!
                     """);
-            //            return new beverage
+            Beverage beverage = new Beverage(flavorChoice, drinkSize);
+            currentCustomOrder.addItem(beverage);
             displayOrderScreen();
         }
         if (correctChoice.equalsIgnoreCase("no") || correctChoice.equalsIgnoreCase("n")) {
