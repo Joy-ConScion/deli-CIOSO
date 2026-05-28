@@ -1,11 +1,14 @@
 package com.pluralsight.ui;
 
 import com.pluralsight.model.Beverage;
+import com.pluralsight.model.Order;
 
 import java.util.Scanner;
 
 public class UserInterface {
     static Scanner keyboard = new Scanner(System.in);
+
+    private Order currentCustomOrder;
 
     public void display() {
         boolean isRunning = true;
@@ -49,7 +52,10 @@ public class UserInterface {
 
             switch (choice) {
 
-                case 1 -> displayOrderScreen();
+                case 1 -> {
+                    currentCustomOrder = new Order();
+                    displayOrderScreen();
+                }
                 case 2 -> isRunning = false;
                 default -> System.out.println("Invalid Input");
 
@@ -235,12 +241,12 @@ public class UserInterface {
 
 
         System.out.println("        Are these selections correct? " + inchChoice + " | "
-                           + breadChoice + " | "
-                           + meatChoice + " | "
-                           + toppingChoice + " | "
-                           + quesoChoice + " | "
-                           + sauceChoice + " | "
-                           + toastedChoice + " | "
+                + breadChoice + " | "
+                + meatChoice + " | "
+                + toppingChoice + " | "
+                + quesoChoice + " | "
+                + sauceChoice + " | "
+                + toastedChoice + " | "
 
         );
 
@@ -289,7 +295,7 @@ public class UserInterface {
 
         System.out.println("""
                         Please choose size:
-                        
+                
                         A) Small - $2.00
                         B) Medium - $2.50
                         C) Large - $3.00
@@ -343,7 +349,7 @@ public class UserInterface {
             case 'E', 'e' -> "Doritos";
             default -> throw new IllegalStateException("Unexpected value: " + sideChoice);
         };
-        System.out.println("        Is this your correct choice? " + sideOption );
+        System.out.println("        Is this your correct choice? " + sideOption);
         System.out.println("        Yes/No");
         String correctChoice = keyboard.nextLine();
         if (correctChoice.equalsIgnoreCase("yes") || correctChoice.equalsIgnoreCase("y")) {
