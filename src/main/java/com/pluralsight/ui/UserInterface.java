@@ -117,7 +117,7 @@ public class UserInterface {
                 --------------------------------------
                 
                         Choose your sandwich size from the options below:
-                        
+                
                         A) 4' in
                         B) 8' in
                         C) 12' in
@@ -132,12 +132,12 @@ public class UserInterface {
 
         System.out.println("""
                         Preferred bread type? 
-                        
+                
                         A) White
                         B) Wheat
                         C) Rye
                         D) Wrap
-                        
+                
                 """);
         char sandwichType = keyboard.next().charAt(0);
         String breadChoice = switch (sandwichType) {
@@ -150,7 +150,7 @@ public class UserInterface {
 
         System.out.println("""
                         We have your favourite meats, now you must choose just one.
-                        
+                
                         A) Steak
                         B) Ham
                         C) Salami
@@ -174,7 +174,7 @@ public class UserInterface {
 
         System.out.println("""
                         Sike, we were just kidding back there. We let you choose up to one more meat (50¢/S, $1.50/M, or $2/L).
-                        
+                
                         A) Steak
                         B) Ham
                         C) Salami
@@ -198,7 +198,7 @@ public class UserInterface {
 
         System.out.println("""
                         How would you like to top this Super-Sandwich?
-                        
+                
                         A) Lettuce
                         B) Peppers
                         C) Onions
@@ -228,7 +228,7 @@ public class UserInterface {
 
         System.out.println("""
                         Let's get cheesey in here!
-                        
+                
                         A) American
                         B) Provolone
                         C) Cheddar
@@ -248,7 +248,7 @@ public class UserInterface {
 
         System.out.println("""
                         Wanna get supa cheesey in here?
-                        
+                
                         A) American
                         B) Provolone
                         C) Cheddar
@@ -268,7 +268,7 @@ public class UserInterface {
 
         System.out.println("""
                         Where da sauces at!?
-                        
+                
                         A) Mayo
                         B) Mustard
                         C) Ketchup
@@ -299,7 +299,16 @@ public class UserInterface {
                 """);
         keyboard.nextLine();
         String toastedChoice = keyboard.nextLine().trim();
-        boolean toasted = toastedChoice.equalsIgnoreCase("yes")|| toastedChoice.equalsIgnoreCase("y");
+        boolean toasted = toastedChoice.equalsIgnoreCase("yes") || toastedChoice.equalsIgnoreCase("y");
+
+        if (inchChoice == null || breadChoice == null || meatChoice == null || toppingChoice == null || quesoChoice == null || sauceChoice == null || extraMeatChoice == null || extraQuesoChoice == null) {
+            System.out.println("""
+                    +-*-+*-+*+-*++--+*+-*++-*--+*-*-*-*+-*-*-*+-*+*+-*-+*-+*-*-+
+                    Error - Invalid input detected. Returning to previous screen.
+                    +-*-+*-+*+-*++--+*+-*++-*--+*-*-*-*+-*-*-*+-*+*+-*-+*-+*-*-+
+                    """);
+            return;
+        }
 
         System.out.println("""
                         Are these selections correct?  
@@ -315,8 +324,8 @@ public class UserInterface {
 
         );
         System.out.println("""
-                        
-                        
+                
+                
                         The extras status: 
                 """);
         System.out.println("" + extraMeatChoice + "  &  " + extraQuesoChoice);
@@ -402,21 +411,26 @@ public class UserInterface {
             default -> null;
         };
 
-        if (flavorChoice == null || drinkSize == null){
-            System.out.println("Error - Invalid input detected. Returning to previous screen.");
-            return;}
+        if (flavorChoice == null || drinkSize == null) {
+            System.out.println("""
+                    +-*-+*-+*+-*++--+*+-*++-*--+*-*-*-*+-*-*-*+-*+*+-*-+*-+*-*-+
+                    Error - Invalid input detected. Returning to previous screen.
+                    +-*-+*-+*+-*++--+*+-*++-*--+*-*-*-*+-*-*-*+-*+*+-*-+*-+*-*-+
+                    """);
+            return;
+        }
 
-        System.out.println("        Are these selections correct? " + drinkSize + " " + flavorChoice );
+        System.out.println("        Are these selections correct? " + drinkSize + " " + flavorChoice);
         System.out.println("        Hit enter, then Yes/No");
         keyboard.nextLine();
         String correctChoice = keyboard.nextLine().trim();
         if (correctChoice.equalsIgnoreCase("yes") || correctChoice.equalsIgnoreCase("y")) {
             System.out.println("""
-                            
+                    
                             *************************************************
                             Your refreshing beverage was added to your order!
                             *************************************************
-                            
+                    
                     """);
             Beverage beverage = new Beverage(flavorChoice, drinkSize);
             currentCustomOrder.addItem(beverage);
@@ -427,7 +441,7 @@ public class UserInterface {
                             *****************************
                           -----Restarting Build-A-Bev!-----
                             *****************************
-                            
+                    
                     """);
             return;
         }
@@ -444,11 +458,11 @@ public class UserInterface {
                         One Size - $1.50
                            |||||||||||
                            vVvVvVvVvVv
-                           
+                
                        =Fries
                         A) Regular - Potato
                         B) Curly - Potato
-                        
+                
                        =Chips
                         C) Cheetos
                         D) Spicy
@@ -466,6 +480,16 @@ public class UserInterface {
             case 'F', 'f' -> "No sides";
             default -> null;
         };
+
+        if (sideOption == null) {
+            System.out.println("""
+                    +-*-+*-+*+-*++--+*+-*++-*--+*-*-*-*+-*-*-*+-*+*+-*-+*-+*-*-+
+                    Error - Invalid input detected. Returning to previous screen.
+                    +-*-+*-+*+-*++--+*+-*++-*--+*-*-*-*+-*-*-*+-*+*+-*-+*-+*-*-+
+                    """);
+            return;
+        }
+
         System.out.println("        Is this your correct choice? " + sideOption);
         System.out.println("        Yes/No");
         keyboard.nextLine();
@@ -494,12 +518,12 @@ public class UserInterface {
 
     public void checkingOutScreen() {
         System.out.println("""
-                 
+                
                 ----------------
                 -------|Hope you found everything A-OKAY!
                 -------|Let's get you checked out
                 ----------------
-                 
+                
                 Below we have your order. Ensure it's up to your standards and we'll cure your hunger right away.
                 |
                 """);
