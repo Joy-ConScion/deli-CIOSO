@@ -197,7 +197,6 @@ public class UserInterface {
             D) Roast Beef
             E) Chicken
             F) Bacon
-            G) No meats
             """);
 
         char sandwichMeat = readChar();
@@ -208,7 +207,6 @@ public class UserInterface {
             case 'D', 'd' -> "Roast Beef";
             case 'E', 'e' -> "Chicken";
             case 'F', 'f' -> "Bacon";
-            case 'G', 'g' -> "No meats";
             default -> null;
         };
 
@@ -220,7 +218,6 @@ public class UserInterface {
             D) Roast Beef
             E) Chicken
             F) Bacon
-            G) No meats
             """);
 
         char extraSandwichMeat = readChar();
@@ -231,7 +228,6 @@ public class UserInterface {
             case 'D', 'd' -> "Roast Beef";
             case 'E', 'e' -> "Chicken";
             case 'F', 'f' -> "Bacon";
-            case 'G', 'g' -> "No meats";
             default -> null;
         };
 
@@ -246,7 +242,6 @@ public class UserInterface {
             G) Pickles
             H) Guacamole
             I) Mushrooms
-            J) No toppings
             """);
 
         char sandwichToppings = readChar();
@@ -260,7 +255,6 @@ public class UserInterface {
             case 'G', 'g' -> "Pickles";
             case 'H', 'h' -> "Guacamole";
             case 'I', 'i' -> "Mushrooms";
-            case 'J', 'j' -> "No toppings";
             default -> null;
         };
 
@@ -270,7 +264,6 @@ public class UserInterface {
             B) Provolone
             C) Cheddar
             D) Swiss
-            E) No cheese
             """);
 
         char sandwichCheese = readChar();
@@ -279,7 +272,6 @@ public class UserInterface {
             case 'B', 'b' -> "Provolone";
             case 'C', 'c' -> "Cheddar";
             case 'D', 'd' -> "Swiss";
-            case 'E', 'e' -> "No cheese";
             default -> null;
         };
 
@@ -291,7 +283,6 @@ public class UserInterface {
             D) Ranch
             E) Thousand Island
             F) Vinaigrette
-            G) No sauce
             """);
 
         char sandwichSauce = readChar();
@@ -302,7 +293,6 @@ public class UserInterface {
             case 'D', 'd' -> "Ranch";
             case 'E', 'e' -> "Thousand Island";
             case 'F', 'f' -> "Vinaigrette";
-            case 'G', 'g' -> "No sauce";
             default -> null;
         };
 
@@ -353,7 +343,6 @@ public class UserInterface {
                         E) Lemon-lime
                         F) Lemonade
                         G) Sweet tea
-                        H) No beverage
                 
                 """);
         char beverageChoice = readChar();
@@ -367,7 +356,6 @@ public class UserInterface {
             case 'E', 'e' -> "Lemon-Lime";
             case 'F', 'f' -> "Lemonade";
             case 'G', 'g' -> "Sweet Tea";
-            case 'H', 'h' -> "No beverage";
             default -> null;
         };
 
@@ -442,7 +430,6 @@ public class UserInterface {
                         C) Cheetos
                         D) Spicy
                         E) Doritos
-                        F) No sides
                 
                 """);
         char sideChoice = readChar();
@@ -452,7 +439,6 @@ public class UserInterface {
             case 'C', 'c' -> "Cheetos";
             case 'D', 'd' -> "Spicy";
             case 'E', 'e' -> "Doritos";
-            case 'F', 'f' -> "No sides";
             default -> null;
         };
 
