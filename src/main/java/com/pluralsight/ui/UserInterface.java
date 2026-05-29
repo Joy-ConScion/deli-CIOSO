@@ -639,25 +639,6 @@ public class UserInterface {
         }
     }
 
-    public void bltTortaScreen(){
-
-        Sandwich blt = new BLT();
-
-        System.out.println("""
-                -------------------
-                -------|BLT added to order. Would you like to modify it?
-                -------------------
-                
-                Yes/No
-                
-                """);
-
-    }
-
-    public void pcsTortaScreen() {
-
-    }
-
         public void buildABeverageScreen() {
 
         System.out.println("""

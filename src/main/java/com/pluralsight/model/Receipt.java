@@ -63,9 +63,4 @@ public class Receipt {
         this.total = total;
     }
 
-
-//    @Override
-//    public String toString(){
-//        return size + "" + getName
-//    }
 }

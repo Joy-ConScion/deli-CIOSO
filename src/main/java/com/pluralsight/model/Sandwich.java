@@ -11,7 +11,7 @@ public class Sandwich extends MenuItem {
     private boolean toasted;
 
     public Sandwich(String size, String bread, String meat, String topping, String cheese, String sauce, boolean toasted) {
-        super("IDK generic", 0.00);
+        super("Customer-Made", 0.00);
         this.size = size;
         this.bread = bread;
         this.meat = meat;

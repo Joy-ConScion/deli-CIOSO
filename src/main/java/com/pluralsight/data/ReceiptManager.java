@@ -36,7 +36,6 @@ public class ReceiptManager {
             writer.newLine();
             writer.write("Number of Items: " + order.getItemCount());
             writer.newLine();
-//            writer.write("Order Number " + );
             writer.newLine();
             writer.write("Come back again!");
             writer.newLine();
