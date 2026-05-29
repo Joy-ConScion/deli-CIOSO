@@ -373,6 +373,7 @@ public class UserInterface {
                 """);
         char beverageChoice = keyboard.next().charAt(0);
 
+
         String flavorChoice = switch (beverageChoice) {
             case 'A', 'a' -> "Coke";
             case 'B', 'b' -> "Dr.Pepper";
@@ -400,6 +401,10 @@ public class UserInterface {
             case 'C', 'c' -> "Large";
             default -> null;
         };
+
+        if (flavorChoice == null || drinkSize == null){
+            System.out.println("Error - Invalid input detected. Returning to previous screen.");
+            return;}
 
         System.out.println("        Are these selections correct? " + drinkSize + " " + flavorChoice );
         System.out.println("        Hit enter, then Yes/No");
