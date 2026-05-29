@@ -14,7 +14,7 @@ public class Receipt {
     public Receipt(LocalDate date, LocalTime time, String description, String vendor, double total) {
         this.date = date;
         this.time = time;
-        this.description = description; /*Somehow setup so that sandwich order is stored here*/
+        this.description = description;
         this.vendor = "¡Deli-CIOSO!";
         this.total = total;
     }

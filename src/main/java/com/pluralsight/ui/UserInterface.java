@@ -44,7 +44,14 @@ public class UserInterface {
                     1) New Order
                     2) Exit
                     """);
-            int choice = Integer.parseInt(readLine());
+            int choice = 0;
+            try {
+                choice = Integer.parseInt(readLine());
+            } catch (NumberFormatException e) {
+                System.out.println("""
+                        
+                        """);;
+            }
 
             switch (choice) {
 
@@ -86,7 +93,14 @@ public class UserInterface {
                     
                     
                     """);
-            int secondChoice = Integer.parseInt(readLine());
+            int secondChoice = 0;
+            try {
+                secondChoice = Integer.parseInt(readLine());
+            } catch (NumberFormatException e) {
+                System.out.println("""
+                        Whoops, you misclicked. Try again!
+                        """);;
+            }
 
 
             switch (secondChoice) {
