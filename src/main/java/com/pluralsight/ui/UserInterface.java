@@ -44,7 +44,7 @@ public class UserInterface {
                     1) New Order
                     2) Exit
                     """);
-            int choice = keyboard.nextInt();
+            int choice = Integer.parseInt(readLine());
 
             switch (choice) {
 
@@ -87,7 +87,7 @@ public class UserInterface {
                     
                     
                     """);
-            int secondChoice = keyboard.nextInt();
+            int secondChoice = Integer.parseInt(readLine());
 
 
             switch (secondChoice) {
@@ -120,7 +120,7 @@ public class UserInterface {
                 C) Custom Build One
                 
                 """);
-        char signatureChoice = keyboard.next().charAt(0);
+        char signatureChoice = readChar();
 
         switch (signatureChoice) {
             case 'A', 'a' -> sandwich = new BLT();
@@ -138,7 +138,7 @@ public class UserInterface {
             System.out.println("The Torta has been added. Would you like to modify it?");
             System.out.println("Yes/No");
             keyboard.nextLine();
-            String modifyChoice = keyboard.nextLine().trim();
+            String modifyChoice = readLine();
             if(modifyChoice.equalsIgnoreCase("yes") || modifyChoice.equalsIgnoreCase("y")) {
                 System.out.println("""
                         Choose your sandwich size from the options below:
@@ -148,7 +148,7 @@ public class UserInterface {
                         C) 12' in
                         
                 """);
-                char sandwichSize = keyboard.next().charAt(0);
+                char sandwichSize = readChar();
                 String inchChoice = switch (sandwichSize) {
                     case 'A', 'a' -> "4' in";
                     case 'B', 'b' -> "8' in";
@@ -165,7 +165,7 @@ public class UserInterface {
                         D) Wrap
                 
                 """);
-                char sandwichType = keyboard.next().charAt(0);
+                char sandwichType = readChar();
                 String breadChoice = switch (sandwichType) {
                     case 'A', 'a' -> "White";
                     case 'B', 'b' -> "Wheat";
@@ -186,7 +186,7 @@ public class UserInterface {
                         G) No meats
                 
                 """);
-                char sandwichMeat = keyboard.next().charAt(0);
+                char sandwichMeat = readChar();
                 String meatChoice = switch (sandwichMeat) {
                     case 'A', 'a' -> "Steak";
                     case 'B', 'b' -> "Ham";
@@ -210,7 +210,7 @@ public class UserInterface {
                         G) No meats
                 
                 """);
-                char extraSandwichMeat = keyboard.next().charAt(0);
+                char extraSandwichMeat = readChar();
                 String extraMeatChoice = switch (extraSandwichMeat) {
                     case 'A', 'a' -> "Steak";
                     case 'B', 'b' -> "Ham";
@@ -237,7 +237,7 @@ public class UserInterface {
                         J) No toppings
                 
                 """);
-                char sandwichToppings = keyboard.next().charAt(0);
+                char sandwichToppings = readChar();
                 String toppingChoice = switch (sandwichToppings) {
                     case 'A', 'a' -> "Lettuce";
                     case 'B', 'b' -> "Peppers";
@@ -262,7 +262,7 @@ public class UserInterface {
                         E) No cheese
                 
                 """);
-                char sandwichCheese = keyboard.next().charAt(0);
+                char sandwichCheese = readChar();
                 String quesoChoice = switch (sandwichCheese) {
                     case 'A', 'a' -> "American";
                     case 'B', 'b' -> "Provolone";
@@ -282,7 +282,7 @@ public class UserInterface {
                         E) No cheese
                 
                 """);
-                char extraSandwichCheese = keyboard.next().charAt(0);
+                char extraSandwichCheese = readChar();
                 String extraQuesoChoice = switch (extraSandwichCheese) {
                     case 'A', 'a' -> "American";
                     case 'B', 'b' -> "Provolone";
@@ -304,7 +304,7 @@ public class UserInterface {
                         G) No sauce
                 
                 """);
-                char sandwichSauce = keyboard.next().charAt(0);
+                char sandwichSauce = readChar();
                 String sauceChoice = switch (sandwichSauce) {
                     case 'A', 'a' -> "Mayo";
                     case 'B', 'b' -> "Mustard";
@@ -327,7 +327,8 @@ public class UserInterface {
                 String toastedChoice = keyboard.nextLine().trim();
                 boolean toasted = toastedChoice.equalsIgnoreCase("yes") || toastedChoice.equalsIgnoreCase("y");
 
-                if (inchChoice == null || breadChoice == null || meatChoice == null || toppingChoice == null || quesoChoice == null || sauceChoice == null || extraMeatChoice == null || extraQuesoChoice == null) {
+                if (isInvalid(inchChoice, breadChoice, meatChoice, toppingChoice,
+                        quesoChoice, sauceChoice, extraMeatChoice, extraQuesoChoice)) {
                     System.out.println("""
                     +-*-+*-+*+-*++--+*+-*++-*--+*-*-*-*+-*-*-*+-*+*+-*-+*-+*-*-+
                     Error - Invalid input detected. Returning to previous screen.
@@ -359,7 +360,7 @@ public class UserInterface {
                 System.out.println("Enter yes or no below.");
                 String correctChoice = keyboard.next().trim();
 
-                if (correctChoice.equalsIgnoreCase("yes") || correctChoice.equalsIgnoreCase("y")) {
+                if (isYes(correctChoice)){
                     System.out.println("""
                                     **********************************************
                             This personally crafted masterpiece has been added to your order!
@@ -400,7 +401,7 @@ public class UserInterface {
                         C) 12' in
                         
                 """);
-        char sandwichSize = keyboard.next().charAt(0);
+        char sandwichSize = readChar();
         String inchChoice = switch (sandwichSize) {
             case 'A', 'a' -> "4' in";
             case 'B', 'b' -> "8' in";
@@ -417,7 +418,7 @@ public class UserInterface {
                         D) Wrap
                 
                 """);
-        char sandwichType = keyboard.next().charAt(0);
+        char sandwichType = readChar();
         String breadChoice = switch (sandwichType) {
             case 'A', 'a' -> "White";
             case 'B', 'b' -> "Wheat";
@@ -438,7 +439,7 @@ public class UserInterface {
                         G) No meats
                 
                 """);
-        char sandwichMeat = keyboard.next().charAt(0);
+        char sandwichMeat = readChar();
         String meatChoice = switch (sandwichMeat) {
             case 'A', 'a' -> "Steak";
             case 'B', 'b' -> "Ham";
@@ -462,7 +463,7 @@ public class UserInterface {
                         G) No meats
                 
                 """);
-        char extraSandwichMeat = keyboard.next().charAt(0);
+        char extraSandwichMeat = readChar();
         String extraMeatChoice = switch (extraSandwichMeat) {
             case 'A', 'a' -> "Steak";
             case 'B', 'b' -> "Ham";
@@ -489,7 +490,7 @@ public class UserInterface {
                         J) No toppings
                 
                 """);
-        char sandwichToppings = keyboard.next().charAt(0);
+        char sandwichToppings = readChar();
         String toppingChoice = switch (sandwichToppings) {
             case 'A', 'a' -> "Lettuce";
             case 'B', 'b' -> "Peppers";
@@ -514,7 +515,7 @@ public class UserInterface {
                         E) No cheese
                 
                 """);
-        char sandwichCheese = keyboard.next().charAt(0);
+        char sandwichCheese = readChar();
         String quesoChoice = switch (sandwichCheese) {
             case 'A', 'a' -> "American";
             case 'B', 'b' -> "Provolone";
@@ -534,7 +535,7 @@ public class UserInterface {
                         E) No cheese
                 
                 """);
-        char extraSandwichCheese = keyboard.next().charAt(0);
+        char extraSandwichCheese = readChar();
         String extraQuesoChoice = switch (extraSandwichCheese) {
             case 'A', 'a' -> "American";
             case 'B', 'b' -> "Provolone";
@@ -556,7 +557,7 @@ public class UserInterface {
                         G) No sauce
                 
                 """);
-        char sandwichSauce = keyboard.next().charAt(0);
+        char sandwichSauce = readChar();
         String sauceChoice = switch (sandwichSauce) {
             case 'A', 'a' -> "Mayo";
             case 'B', 'b' -> "Mustard";
@@ -579,7 +580,8 @@ public class UserInterface {
         String toastedChoice = keyboard.nextLine().trim();
         boolean toasted = toastedChoice.equalsIgnoreCase("yes") || toastedChoice.equalsIgnoreCase("y");
 
-        if (inchChoice == null || breadChoice == null || meatChoice == null || toppingChoice == null || quesoChoice == null || sauceChoice == null || extraMeatChoice == null || extraQuesoChoice == null) {
+        if (isInvalid(inchChoice, breadChoice, meatChoice, toppingChoice,
+                quesoChoice, sauceChoice, extraMeatChoice, extraQuesoChoice)) {
             System.out.println("""
                     +-*-+*-+*+-*++--+*+-*++-*--+*-*-*-*+-*-*-*+-*+*+-*-+*-+*-*-+
                     Error - Invalid input detected. Returning to previous screen.
@@ -611,7 +613,7 @@ public class UserInterface {
         System.out.println("Enter yes or no below.");
         String correctChoice = keyboard.next().trim();
 
-        if (correctChoice.equalsIgnoreCase("yes") || correctChoice.equalsIgnoreCase("y")) {
+        if (isYes(correctChoice)) {
             System.out.println("""
                                     **********************************************
                             This personally crafted masterpiece has been added to your order!
@@ -639,7 +641,7 @@ public class UserInterface {
         }
     }
 
-        public void buildABeverageScreen() {
+    public void buildABeverageScreen() {
 
         System.out.println("""
                 -------------------
@@ -657,7 +659,7 @@ public class UserInterface {
                         H) No beverage
                 
                 """);
-        char beverageChoice = keyboard.next().charAt(0);
+        char beverageChoice = readChar();
 
 
         String flavorChoice = switch (beverageChoice) {
@@ -679,7 +681,7 @@ public class UserInterface {
                         B) Medium - $2.50
                         C) Large - $3.00
                 """);
-        char sizeChoice = keyboard.next().charAt(0);
+        char sizeChoice = readChar();
         keyboard.nextLine();
         String drinkSize = switch (sizeChoice) {
             case 'A', 'a' -> "Small";
@@ -701,7 +703,7 @@ public class UserInterface {
         System.out.println("        Hit enter, then Yes/No");
         keyboard.nextLine();
         String correctChoice = keyboard.nextLine().trim();
-        if (correctChoice.equalsIgnoreCase("yes") || correctChoice.equalsIgnoreCase("y")) {
+        if (isYes(correctChoice)) {
             System.out.println("""
                     
                             *************************************************
@@ -747,7 +749,7 @@ public class UserInterface {
                         F) No sides
                 
                 """);
-        char sideChoice = keyboard.next().charAt(0);
+        char sideChoice = readChar();
         String sideOption = switch (sideChoice) {
             case 'A', 'a' -> "Regular - Potato";
             case 'B', 'b' -> "Curly - Potato";
@@ -771,7 +773,7 @@ public class UserInterface {
         System.out.println("        Yes/No");
         keyboard.nextLine();
         String correctChoice = keyboard.nextLine().trim();
-        if (correctChoice.equalsIgnoreCase("yes") || correctChoice.equalsIgnoreCase("y")) {
+        if (isYes(correctChoice)) {
             System.out.println("""
                             **********************************************
                             Your scrumptious side was added to your order!
@@ -837,6 +839,29 @@ public class UserInterface {
             System.out.println("      -----EXITING-----");
             return;
         }
+    }
+
+    private String readLine() {
+        String input = keyboard.nextLine();
+        while (input.isBlank()) {
+            input = keyboard.nextLine();
+        }
+        return input.trim();
+    }
+
+    private boolean isYes(String input) {
+        return input != null && (input.equalsIgnoreCase("yes") || input.equalsIgnoreCase("y"));
+    }
+
+    private boolean isInvalid(String... inputs) {
+        for (String input : inputs) {
+            if (input == null) return true;
+        }
+        return false;
+    }
+
+    private char readChar() {
+        return Character.toUpperCase(keyboard.next().charAt(0));
     }
 
 }
