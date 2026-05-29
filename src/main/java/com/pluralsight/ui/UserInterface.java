@@ -23,7 +23,6 @@ public class UserInterface {
                                    #\\_  ##| ). o
                                   ##_#)##.'/       --- ---
                                  ##/  )__|/#    --- --- ---
-                                 #/.|/ _)_)#   -   ----    -                         
                       /// ///    ( \\#\\.--|#            --                               
                      /// /// ///  \\| #) !|#           --                          
                     /    ////   /_/| /.__|           --
@@ -35,9 +34,6 @@ public class UserInterface {
                         /////////     / |      )|  ---  -----
                       /////////////  (  |     / |    _---
                      //       /   //  \\ |    |'_|   |
-                         //            )|   _'__'.__|
-                                      (_ \\ |       \s
-                           mrf_________\\\\/'|
                     
                     "Where we turn your munchies into realities"
                     vVvVvVvVvVvVvVvVvVvVvVvVv
