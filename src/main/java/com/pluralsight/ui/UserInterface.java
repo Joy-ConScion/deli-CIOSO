@@ -1,5 +1,6 @@
 package com.pluralsight.ui;
 
+import com.pluralsight.data.ReceiptManager;
 import com.pluralsight.model.Beverage;
 import com.pluralsight.model.Order;
 import com.pluralsight.model.Sandwich;
@@ -323,7 +324,9 @@ public class UserInterface {
 
         if (correctChoice.equalsIgnoreCase("yes") || correctChoice.equalsIgnoreCase("y")) {
             System.out.println("""
+                                    **********************************************
                             This personally crafted masterpiece has been added to your order!
+                                    **********************************************
                     """);
             Sandwich sandwich = new Sandwich(
                     inchChoice,
@@ -338,7 +341,11 @@ public class UserInterface {
             displayOrderScreen();
         }
         if (correctChoice.equalsIgnoreCase("no") || correctChoice.equalsIgnoreCase("n")) {
-            System.out.println("      -----Restarting Build-A-Sandwich!-----");
+            System.out.println("""
+                            **********************************
+                          -----Restarting Build-A-Sandwich!-----
+                            **********************************
+                    """);
             buildASandwichScreen();
         }
     }
@@ -444,9 +451,9 @@ public class UserInterface {
                 """);
         char sideChoice = keyboard.next().charAt(0);
         String sideOption = switch (sideChoice) {
-            case 'A', 'a' -> "Cheetos";
-            case 'B', 'b' -> "Regular - Potato";
-            case 'C', 'c' -> "Curly - Potato";
+            case 'A', 'a' -> "Regular - Potato";
+            case 'B', 'b' -> "Curly - Potato";
+            case 'C', 'c' -> "Cheetos";
             case 'D', 'd' -> "Spicy";
             case 'E', 'e' -> "Doritos";
             case 'F', 'f' -> "No sides";
@@ -458,14 +465,20 @@ public class UserInterface {
         String correctChoice = keyboard.nextLine().trim();
         if (correctChoice.equalsIgnoreCase("yes") || correctChoice.equalsIgnoreCase("y")) {
             System.out.println("""
+                            **********************************************
                             Your scrumptious side was added to your order!
+                            **********************************************
                     """);
             Sides side = new Sides(sideOption);
             currentCustomOrder.addItem(side);
             displayOrderScreen();
         }
         if (correctChoice.equalsIgnoreCase("no") || correctChoice.equalsIgnoreCase("n")) {
-            System.out.println("      -----Restarting Build-A-Side!-----");
+            System.out.println("""
+                            *****************************
+                          -----Restarting Build-A-Side!-----
+                            *****************************
+                    """);
             buildASideScreen();
         }
 
@@ -503,10 +516,11 @@ public class UserInterface {
         String finalChoice = keyboard.nextLine().trim();
         if (finalChoice.equalsIgnoreCase("yes") || finalChoice.equalsIgnoreCase("y")) {
             System.out.println("""
+                            $%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&
                             Order being prepared for pickup! Thanks for dining with us and take care!
+                            $%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&
                     """);
-//            Receipt creation code here
-
+            ReceiptManager.saveReceipt(currentCustomOrder);
             displayOrderScreen();
         }
         if (finalChoice.equalsIgnoreCase("no") || finalChoice.equalsIgnoreCase("n")) {
