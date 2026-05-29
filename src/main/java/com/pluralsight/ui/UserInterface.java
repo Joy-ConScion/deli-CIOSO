@@ -1,10 +1,7 @@
 package com.pluralsight.ui;
 
 import com.pluralsight.data.ReceiptManager;
-import com.pluralsight.model.Beverage;
-import com.pluralsight.model.Order;
-import com.pluralsight.model.Sandwich;
-import com.pluralsight.model.Sides;
+import com.pluralsight.model.*;
 
 import java.util.Scanner;
 
@@ -85,7 +82,9 @@ public class UserInterface {
                         1) Add Sandwich
                         2) Add Drink
                         3) Add Chips
-                        4) Checkout
+                        4) Add BLT Torta
+                        5) Add Philly Cheese Steak Torta
+                        6) Checkout/*FIX*/
                         0) Cancel Order
                     
                     
@@ -98,7 +97,9 @@ public class UserInterface {
                 case 1 -> buildASandwichScreen();
                 case 2 -> buildABeverageScreen();
                 case 3 -> buildASideScreen();
-                case 4 -> checkingOutScreen();
+                case 4 -> bltTortaScreen();
+                case 5 -> pcsTortaScreen();
+                case 6 -> checkingOutScreen();
                 case 0 -> {
                     return;
                 }
@@ -116,11 +117,20 @@ public class UserInterface {
                 -------|Beginning sandwich creation process...
                 --------------------------------------
                 
+                A) BLT Torta
+                B) Philly Cheese Steak Torta
+                C) Custom Build One
+                
+                """);
+
+
+        System.out.println("""
                         Choose your sandwich size from the options below:
                 
                         A) 4' in
                         B) 8' in
                         C) 12' in
+                        
                 """);
         char sandwichSize = keyboard.next().charAt(0);
         String inchChoice = switch (sandwichSize) {
@@ -361,8 +371,26 @@ public class UserInterface {
         }
     }
 
+    public void bltTortaScreen(){
 
-    public void buildABeverageScreen() {
+        Sandwich blt = new BLT();
+
+        System.out.println("""
+                -------------------
+                -------|BLT added to order. Would you like to modify it?
+                -------------------
+                
+                Yes/No
+                
+                """);
+
+    }
+
+    public void pcsTortaScreen() {
+
+    }
+
+        public void buildABeverageScreen() {
 
         System.out.println("""
                 -------------------
