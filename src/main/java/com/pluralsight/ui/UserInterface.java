@@ -104,7 +104,12 @@ public class UserInterface {
                 case 1 -> buildASandwichScreen();
                 case 2 -> buildABeverageScreen();
                 case 3 -> buildASideScreen();
-                case 4 -> runCheckingOutScreen();
+                case 4 -> {
+                    boolean orderFinalized = runCheckingOutScreen();
+                    if (orderFinalized) {
+                        return;
+                    }
+                }
                 case 0 -> {
                     return;
                 }
@@ -486,7 +491,7 @@ public class UserInterface {
 
     }
 
-    public void runCheckingOutScreen() {
+    public boolean runCheckingOutScreen() {
         System.out.println("""
                 
                 ----------------
@@ -513,22 +518,27 @@ public class UserInterface {
                 No) Cancel & Go Back
                 
                 """);
-        keyboard.nextLine();
-        String finalChoice = keyboard.nextLine().trim();
-        if (finalChoice.equalsIgnoreCase("yes") || finalChoice.equalsIgnoreCase("y")) {
+        while (true) {
+            String finalChoice = readLine();
+            if (isYes(finalChoice)) {
+                System.out.println("""
+                                $%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&
+                                Order being prepared for pickup! Thanks for dining with us and take care!
+                                $%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&
+                        """);
+                ReceiptManager.saveReceipt(currentCustomOrder);
+                currentCustomOrder = null;
+                return true;
+            }
+            if (finalChoice.equalsIgnoreCase("no") || finalChoice.equalsIgnoreCase("n")) {
+                System.out.println("      -----No worries-----");
+                System.out.println("      -----EXITING-----");
+                return false;
+            }
             System.out.println("""
-                            $%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&
-                            Order being prepared for pickup! Thanks for dining with us and take care!
-                            $%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&
+                    Whoops! You misclicked, enter yes or no.
                     """);
-            ReceiptManager.saveReceipt(currentCustomOrder);
-            currentCustomOrder = null;
-            return;
-        }
-        if (finalChoice.equalsIgnoreCase("no") || finalChoice.equalsIgnoreCase("n")) {
-            System.out.println("      -----No worries-----");
-            System.out.println("      -----EXITING-----");
-            return;
+            return false;
         }
     }
 
