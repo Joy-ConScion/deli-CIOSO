@@ -99,7 +99,9 @@ public class UserInterface {
                 case 2 -> buildABeverageScreen();
                 case 3 -> buildASideScreen();
                 case 4 -> checkingOutScreen();
-                case 0 -> isOrderScreenRunning = false;
+                case 0 -> {
+                    return;
+                }
                 default -> System.out.println("Invalid Input");
 
             }
@@ -110,32 +112,32 @@ public class UserInterface {
     public void buildASandwichScreen() {
 
         System.out.println("""
-                ---------------------------------------
-                Beginning sandwich creation process...
-                ---------------------------------------
+                --------------------------------------
+                -------|Beginning sandwich creation process...
+                --------------------------------------
                 
-                Choose your sandwich size from the options below:
-                
-                A) 4' in
-                B) 8' in
-                C) 12' in
+                        Choose your sandwich size from the options below:
+                        
+                        A) 4' in
+                        B) 8' in
+                        C) 12' in
                 """);
         char sandwichSize = keyboard.next().charAt(0);
         String inchChoice = switch (sandwichSize) {
             case 'A', 'a' -> "4' in";
             case 'B', 'b' -> "8' in";
             case 'C', 'c' -> "12' in";
-            default -> throw new IllegalStateException("Unexpected value: " + sandwichSize);
+            default -> System.out.println("Whoops, invalid input. Try again!");
         };
 
         System.out.println("""
-                Preferred bread type? 
-                
-                A) White
-                B) Wheat
-                C) Rye
-                D) Wrap
-                
+                        Preferred bread type? 
+                        
+                        A) White
+                        B) Wheat
+                        C) Rye
+                        D) Wrap
+                        
                 """);
         char sandwichType = keyboard.next().charAt(0);
         String breadChoice = switch (sandwichType) {
@@ -147,15 +149,15 @@ public class UserInterface {
         };
 
         System.out.println("""
-                We have your favourite meats, now you must choose just one.
-                
-                A) Steak
-                B) Ham
-                C) Salami
-                D) Roast Beef
-                E) Chicken
-                F) Bacon
-                G) No meats
+                        We have your favourite meats, now you must choose just one.
+                        
+                        A) Steak
+                        B) Ham
+                        C) Salami
+                        D) Roast Beef
+                        E) Chicken
+                        F) Bacon
+                        G) No meats
                 
                 """);
         char sandwichMeat = keyboard.next().charAt(0);
@@ -171,15 +173,15 @@ public class UserInterface {
         };
 
         System.out.println("""
-                Sike, we were just kidding back there. We let you choose up to one more meat (50¢/S, $1.50/M, or $2/L).
-                
-                A) Steak
-                B) Ham
-                C) Salami
-                D) Roast Beef
-                E) Chicken
-                F) Bacon
-                G) No meats
+                        Sike, we were just kidding back there. We let you choose up to one more meat (50¢/S, $1.50/M, or $2/L).
+                        
+                        A) Steak
+                        B) Ham
+                        C) Salami
+                        D) Roast Beef
+                        E) Chicken
+                        F) Bacon
+                        G) No meats
                 
                 """);
         char extraSandwichMeat = keyboard.next().charAt(0);
@@ -195,18 +197,18 @@ public class UserInterface {
         };
 
         System.out.println("""
-                How would you like to top this Super-Sandwich?
-                
-                A) Lettuce
-                B) Peppers
-                C) Onions
-                D) Tomatoes
-                E) Jalapenos
-                F) Cucumbers
-                G) Pickles
-                H) Guacamole
-                I) Mushrooms
-                J) No toppings
+                        How would you like to top this Super-Sandwich?
+                        
+                        A) Lettuce
+                        B) Peppers
+                        C) Onions
+                        D) Tomatoes
+                        E) Jalapenos
+                        F) Cucumbers
+                        G) Pickles
+                        H) Guacamole
+                        I) Mushrooms
+                        J) No toppings
                 
                 """);
         char sandwichToppings = keyboard.next().charAt(0);
@@ -225,13 +227,13 @@ public class UserInterface {
         };
 
         System.out.println("""
-                Let's get cheesey in here!
-                
-                A) American
-                B) Provolone
-                C) Cheddar
-                D) Swiss
-                E) No cheese
+                        Let's get cheesey in here!
+                        
+                        A) American
+                        B) Provolone
+                        C) Cheddar
+                        D) Swiss
+                        E) No cheese
                 
                 """);
         char sandwichCheese = keyboard.next().charAt(0);
@@ -245,13 +247,13 @@ public class UserInterface {
         };
 
         System.out.println("""
-                Wanna get supa cheesey in here?
-                
-                A) American
-                B) Provolone
-                C) Cheddar
-                D) Swiss
-                E) No cheese
+                        Wanna get supa cheesey in here?
+                        
+                        A) American
+                        B) Provolone
+                        C) Cheddar
+                        D) Swiss
+                        E) No cheese
                 
                 """);
         char extraSandwichCheese = keyboard.next().charAt(0);
@@ -265,15 +267,15 @@ public class UserInterface {
         };
 
         System.out.println("""
-                Where da sauces at!?
-                
-                A) Mayo
-                B) Mustard
-                C) Ketchup
-                D) Ranch
-                E) Thousand Island
-                F) Vinaigrette
-                G) No sauce
+                        Where da sauces at!?
+                        
+                        A) Mayo
+                        B) Mustard
+                        C) Ketchup
+                        D) Ranch
+                        E) Thousand Island
+                        F) Vinaigrette
+                        G) No sauce
                 
                 """);
         char sandwichSauce = keyboard.next().charAt(0);
@@ -290,9 +292,9 @@ public class UserInterface {
 
         System.out.println("""
                 
-                But do you want it toasted?
-                Simply let us know!
-                Yes/No
+                        But do you want it toasted?
+                        Simply let us know!
+                        Yes/No
                 
                 """);
         keyboard.nextLine();
@@ -315,11 +317,11 @@ public class UserInterface {
         System.out.println("""
                         
                         
-                        Enter yes or no below.
                         The extras status: 
                 """);
         System.out.println("" + extraMeatChoice + "  &  " + extraQuesoChoice);
         System.out.println(" ");
+        System.out.println("Enter yes or no below.");
         String correctChoice = keyboard.next().trim();
 
         if (correctChoice.equalsIgnoreCase("yes") || correctChoice.equalsIgnoreCase("y")) {
@@ -338,15 +340,15 @@ public class UserInterface {
                     toasted
             );
             currentCustomOrder.addItem(sandwich);
-            displayOrderScreen();
+            return;
         }
         if (correctChoice.equalsIgnoreCase("no") || correctChoice.equalsIgnoreCase("n")) {
             System.out.println("""
                             **********************************
-                          -----Restarting Build-A-Sandwich!-----
+                          -----Exiting Build-A-Sandwich!-----
                             **********************************
                     """);
-            buildASandwichScreen();
+            return;
         }
     }
 
@@ -413,7 +415,7 @@ public class UserInterface {
                     """);
             Beverage beverage = new Beverage(flavorChoice, drinkSize);
             currentCustomOrder.addItem(beverage);
-            displayOrderScreen();
+            return;
         }
         if (correctChoice.equalsIgnoreCase("no") || correctChoice.equalsIgnoreCase("n")) {
             System.out.println("""
@@ -422,7 +424,7 @@ public class UserInterface {
                             *****************************
                             
                     """);
-            buildABeverageScreen();
+            return;
         }
     }
 
@@ -471,15 +473,15 @@ public class UserInterface {
                     """);
             Sides side = new Sides(sideOption);
             currentCustomOrder.addItem(side);
-            displayOrderScreen();
+            return;
         }
         if (correctChoice.equalsIgnoreCase("no") || correctChoice.equalsIgnoreCase("n")) {
             System.out.println("""
                             *****************************
-                          -----Restarting Build-A-Side!-----
+                          -----Exiting Build-A-Side!-----
                             *****************************
                     """);
-            buildASideScreen();
+            return;
         }
 
     }
@@ -494,14 +496,14 @@ public class UserInterface {
                 ----------------
                  
                 Below we have your order. Ensure it's up to your standards and we'll cure your hunger right away.
-                
+                |
                 """);
 
         System.out.println(">>>" + currentCustomOrder.getCustomOrder() + "<<<");
         System.out.println("""
                 
                 And here's your total
-                
+                |
                 """);
         System.out.println("<<<[$" + currentCustomOrder.calculateTotal() + "]>>>");
 
@@ -521,11 +523,13 @@ public class UserInterface {
                             $%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&$%&
                     """);
             ReceiptManager.saveReceipt(currentCustomOrder);
-            displayOrderScreen();
+            currentCustomOrder = null;
+            return;
         }
         if (finalChoice.equalsIgnoreCase("no") || finalChoice.equalsIgnoreCase("n")) {
             System.out.println("      -----No worries-----");
-            buildASideScreen();
+            System.out.println("      -----EXITING-----");
+            return;
         }
     }
 
