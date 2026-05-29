@@ -28,5 +28,7 @@ public class Order {
         }
             return total;
     }
-
+    public int getItemCount() {
+        return customOrder.size();
+    }
 }
