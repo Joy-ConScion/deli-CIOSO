@@ -9,12 +9,12 @@ public class BLT extends Sandwich{
                 "Cheddar", "Ranch",
                 true
         );
-        
+
     }
 
     @Override
     public String toString(){
-        return "BLT ->" + super.toString();
+        return "Bacon Lettuce Tomato Torta ->" + super.toString();
     }
     
 }

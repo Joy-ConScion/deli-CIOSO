@@ -8,7 +8,7 @@ public class App {
 
         UserInterface ui = new UserInterface();
 
-        ui.display();
+        ui.runMainMenu();
 
 
     }
