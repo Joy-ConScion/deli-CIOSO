@@ -6,8 +6,8 @@ import com.pluralsight.model.*;
 import java.util.Scanner;
 
 public class UserInterface {
-    static Scanner keyboard = new Scanner(System.in);
 
+    static Scanner keyboard = new Scanner(System.in);
     private Order currentCustomOrder;
 
     public void runMainMenu() {
@@ -68,7 +68,6 @@ public class UserInterface {
 
     }
 
-
     public void displayOrderScreen() {
 
         boolean isOrderScreenRunning = true;
@@ -95,7 +94,7 @@ public class UserInterface {
                 case 1 -> buildASandwichScreen();
                 case 2 -> buildABeverageScreen();
                 case 3 -> buildASideScreen();
-                case 4 -> checkingOutScreen();
+                case 4 -> runCheckingOutScreen();
                 case 0 -> {
                     return;
                 }
@@ -105,302 +104,66 @@ public class UserInterface {
         }
     }
 
-
     public void buildASandwichScreen() {
 
-        Sandwich sandwich = null;
-
         System.out.println("""
-                --------------------------------------
-                -------|Beginning sandwich creation process...
-                --------------------------------------
-                
-                A) BLT Torta
-                B) Philly Cheese Steak Torta
-                C) Custom Build One
-                
-                """);
+            --------------------------------------
+            -------|Beginning sandwich creation process...
+            --------------------------------------
+            
+            A) BLT Torta
+            B) Philly Cheese Steak Torta
+            C) Custom Build One
+            
+            """);
+
         char signatureChoice = readChar();
 
         switch (signatureChoice) {
-            case 'A', 'a' -> sandwich = new BLT();
-            case 'B', 'b' -> sandwich = new PCS();
-            case 'C', 'c' -> {}
-            default -> {
-                System.out.println("""
-                        Whoops! Invalid choice, returning to previous screen.
-                        """);
-                return;
+            case 'A', 'a' -> {
+                Sandwich sandwich = new BLT();
+                modifySignatureSandwich(sandwich);
             }
+            case 'B', 'b' -> {
+                Sandwich sandwich = new PCS();
+                modifySignatureSandwich(sandwich);
+            }
+            case 'C', 'c' -> buildCustomSandwich();
+            default -> System.out.println("""
+                Whoops! Invalid choice, returning to previous screen.
+                """);
         }
+    }
 
-        if (sandwich != null) {
-            System.out.println("The Torta has been added. Would you like to modify it?");
-            System.out.println("Yes/No");
-            keyboard.nextLine();
-            String modifyChoice = readLine();
-            if(modifyChoice.equalsIgnoreCase("yes") || modifyChoice.equalsIgnoreCase("y")) {
-                System.out.println("""
-                        Choose your sandwich size from the options below:
-                
-                        A) 4' in
-                        B) 8' in
-                        C) 12' in
-                        
-                """);
-                char sandwichSize = readChar();
-                String inchChoice = switch (sandwichSize) {
-                    case 'A', 'a' -> "4' in";
-                    case 'B', 'b' -> "8' in";
-                    case 'C', 'c' -> "12' in";
-                    default -> null;
-                };
+    private void modifySignatureSandwich(Sandwich sandwich) {
 
-                System.out.println("""
-                        Preferred bread type? 
-                
-                        A) White
-                        B) Wheat
-                        C) Rye
-                        D) Wrap
-                
-                """);
-                char sandwichType = readChar();
-                String breadChoice = switch (sandwichType) {
-                    case 'A', 'a' -> "White";
-                    case 'B', 'b' -> "Wheat";
-                    case 'C', 'c' -> "Rye";
-                    case 'D', 'd' -> "Wrap";
-                    default -> null;
-                };
+        System.out.println("The Torta has been added. Would you like to modify it?");
+        System.out.println("Yes/No");
 
-                System.out.println("""
-                        We have your favourite meats, now you must choose just one.
-                
-                        A) Steak
-                        B) Ham
-                        C) Salami
-                        D) Roast Beef
-                        E) Chicken
-                        F) Bacon
-                        G) No meats
-                
-                """);
-                char sandwichMeat = readChar();
-                String meatChoice = switch (sandwichMeat) {
-                    case 'A', 'a' -> "Steak";
-                    case 'B', 'b' -> "Ham";
-                    case 'C', 'c' -> "Salami";
-                    case 'D', 'd' -> "Roast Beef";
-                    case 'E', 'e' -> "Chicken";
-                    case 'F', 'f' -> "Bacon";
-                    case 'G', 'g' -> "No meats";
-                    default -> null;
-                };
+        keyboard.nextLine();
+        String modifyChoice = readLine();
 
-                System.out.println("""
-                        Sike, we were just kidding back there. We let you choose up to one more meat (50¢/S, $1.50/M, or $2/L).
-                
-                        A) Steak
-                        B) Ham
-                        C) Salami
-                        D) Roast Beef
-                        E) Chicken
-                        F) Bacon
-                        G) No meats
-                
-                """);
-                char extraSandwichMeat = readChar();
-                String extraMeatChoice = switch (extraSandwichMeat) {
-                    case 'A', 'a' -> "Steak";
-                    case 'B', 'b' -> "Ham";
-                    case 'C', 'c' -> "Salami";
-                    case 'D', 'd' -> "Roast Beef";
-                    case 'E', 'e' -> "Chicken";
-                    case 'F', 'f' -> "Bacon";
-                    case 'G', 'g' -> "No meats";
-                    default -> null;
-                };
-
-                System.out.println("""
-                        How would you like to top this Super-Sandwich?
-                
-                        A) Lettuce
-                        B) Peppers
-                        C) Onions
-                        D) Tomatoes
-                        E) Jalapenos
-                        F) Cucumbers
-                        G) Pickles
-                        H) Guacamole
-                        I) Mushrooms
-                        J) No toppings
-                
-                """);
-                char sandwichToppings = readChar();
-                String toppingChoice = switch (sandwichToppings) {
-                    case 'A', 'a' -> "Lettuce";
-                    case 'B', 'b' -> "Peppers";
-                    case 'C', 'c' -> "Onions";
-                    case 'D', 'd' -> "Tomatoes";
-                    case 'E', 'e' -> "Jalapenos";
-                    case 'F', 'f' -> "Cucumbers";
-                    case 'G', 'g' -> "Pickles";
-                    case 'H', 'h' -> "Guacamole";
-                    case 'I', 'i' -> "Mushrooms";
-                    case 'J', 'j' -> "No toppings";
-                    default -> null;
-                };
-
-                System.out.println("""
-                        Let's get cheesey in here!
-                
-                        A) American
-                        B) Provolone
-                        C) Cheddar
-                        D) Swiss
-                        E) No cheese
-                
-                """);
-                char sandwichCheese = readChar();
-                String quesoChoice = switch (sandwichCheese) {
-                    case 'A', 'a' -> "American";
-                    case 'B', 'b' -> "Provolone";
-                    case 'C', 'c' -> "Cheddar";
-                    case 'D', 'd' -> "Swiss";
-                    case 'E', 'e' -> "No cheese";
-                    default -> null;
-                };
-
-                System.out.println("""
-                        Wanna get super cheesey in here?
-                
-                        A) American
-                        B) Provolone
-                        C) Cheddar
-                        D) Swiss
-                        E) No cheese
-                
-                """);
-                char extraSandwichCheese = readChar();
-                String extraQuesoChoice = switch (extraSandwichCheese) {
-                    case 'A', 'a' -> "American";
-                    case 'B', 'b' -> "Provolone";
-                    case 'C', 'c' -> "Cheddar";
-                    case 'D', 'd' -> "Swiss";
-                    case 'E', 'e' -> "No cheese";
-                    default -> null;
-                };
-
-                System.out.println("""
-                        Where da sauces at!?
-                
-                        A) Mayo
-                        B) Mustard
-                        C) Ketchup
-                        D) Ranch
-                        E) Thousand Island
-                        F) Vinaigrette
-                        G) No sauce
-                
-                """);
-                char sandwichSauce = readChar();
-                String sauceChoice = switch (sandwichSauce) {
-                    case 'A', 'a' -> "Mayo";
-                    case 'B', 'b' -> "Mustard";
-                    case 'C', 'c' -> "Ketchup";
-                    case 'D', 'd' -> "Ranch";
-                    case 'E', 'e' -> "Thousand Island";
-                    case 'F', 'f' -> "Vinaigrette";
-                    case 'G', 'g' -> "No sauce";
-                    default -> null;
-                };
-
-                System.out.println("""
-                
-                        But do you want it toasted?
-                        Simply let us know!
-                        Yes/No
-                
-                """);
-                keyboard.nextLine();
-                String toastedChoice = keyboard.nextLine().trim();
-                boolean toasted = toastedChoice.equalsIgnoreCase("yes") || toastedChoice.equalsIgnoreCase("y");
-
-                if (isInvalid(inchChoice, breadChoice, meatChoice, toppingChoice,
-                        quesoChoice, sauceChoice, extraMeatChoice, extraQuesoChoice)) {
-                    System.out.println("""
-                    +-*-+*-+*+-*++--+*+-*++-*--+*-*-*-*+-*-*-*+-*+*+-*-+*-+*-*-+
-                    Error - Invalid input detected. Returning to previous screen.
-                    +-*-+*-+*+-*++--+*+-*++-*--+*-*-*-*+-*-*-*+-*+*+-*-+*-+*-*-+
-                    """);
-                    return;
-                }
-
-                System.out.println("""
-                        Are these selections correct?  
-                """);
-                System.out.println(""
-                        + inchChoice + "  |  "
-                        + breadChoice + "  |  "
-                        + meatChoice + "  |  "
-                        + toppingChoice + "  |  "
-                        + quesoChoice + "  |  "
-                        + sauceChoice + "  |  "
-                        + toastedChoice + "  |  "
-
-                );
-                System.out.println("""
-                
-                
-                        The extras status: 
-                """);
-                System.out.println("" + extraMeatChoice + "  &  " + extraQuesoChoice);
-                System.out.println(" ");
-                System.out.println("Enter yes or no below.");
-                String correctChoice = keyboard.next().trim();
-
-                if (isYes(correctChoice)){
-                    System.out.println("""
-                                    **********************************************
-                            This personally crafted masterpiece has been added to your order!
-                                    **********************************************
-                    """);
-                     sandwich = new Sandwich(
-                            inchChoice,
-                            breadChoice,
-                            meatChoice,
-                            toppingChoice,
-                            quesoChoice,
-                            sauceChoice,
-                            toasted
-                    );
-                    currentCustomOrder.addItem(sandwich);
-                    return;
-                }
-                if (correctChoice.equalsIgnoreCase("no") || correctChoice.equalsIgnoreCase("n")) {
-                    System.out.println("""
-                            **********************************
-                          -----Exiting Build-A-Sandwich!-----
-                            **********************************
-                    """);
-                    return;
-                }
-            }
-
-            if(modifyChoice.equalsIgnoreCase("no") || modifyChoice.equalsIgnoreCase("n"))
+        if (!modifyChoice.equalsIgnoreCase("yes") && !modifyChoice.equalsIgnoreCase("y")) {
             currentCustomOrder.addItem(sandwich);
             return;
         }
 
+        buildFullSandwichProcess(sandwich);
+    }
+
+    private void buildCustomSandwich() {
+        buildFullSandwichProcess(null);
+    }
+
+    private void buildFullSandwichProcess(Sandwich baseSandwich) {
+
         System.out.println("""
-                        Choose your sandwich size from the options below:
-                
-                        A) 4' in
-                        B) 8' in
-                        C) 12' in
-                        
-                """);
+            Choose your sandwich size from the options below:
+            A) 4' in
+            B) 8' in
+            C) 12' in
+            """);
+
         char sandwichSize = readChar();
         String inchChoice = switch (sandwichSize) {
             case 'A', 'a' -> "4' in";
@@ -410,14 +173,13 @@ public class UserInterface {
         };
 
         System.out.println("""
-                        Preferred bread type? 
-                
-                        A) White
-                        B) Wheat
-                        C) Rye
-                        D) Wrap
-                
-                """);
+            Preferred bread type? 
+            A) White
+            B) Wheat
+            C) Rye
+            D) Wrap
+            """);
+
         char sandwichType = readChar();
         String breadChoice = switch (sandwichType) {
             case 'A', 'a' -> "White";
@@ -428,17 +190,16 @@ public class UserInterface {
         };
 
         System.out.println("""
-                        We have your favourite meats, now you must choose just one.
-                
-                        A) Steak
-                        B) Ham
-                        C) Salami
-                        D) Roast Beef
-                        E) Chicken
-                        F) Bacon
-                        G) No meats
-                
-                """);
+            We have your favourite meats, now you must choose just one.
+            A) Steak
+            B) Ham
+            C) Salami
+            D) Roast Beef
+            E) Chicken
+            F) Bacon
+            G) No meats
+            """);
+
         char sandwichMeat = readChar();
         String meatChoice = switch (sandwichMeat) {
             case 'A', 'a' -> "Steak";
@@ -452,17 +213,16 @@ public class UserInterface {
         };
 
         System.out.println("""
-                        Sike, we were just kidding back there. We let you choose up to one more meat (50¢/S, $1.50/M, or $2/L).
-                
-                        A) Steak
-                        B) Ham
-                        C) Salami
-                        D) Roast Beef
-                        E) Chicken
-                        F) Bacon
-                        G) No meats
-                
-                """);
+            Sike, we allow one extra meat:
+            A) Steak
+            B) Ham
+            C) Salami
+            D) Roast Beef
+            E) Chicken
+            F) Bacon
+            G) No meats
+            """);
+
         char extraSandwichMeat = readChar();
         String extraMeatChoice = switch (extraSandwichMeat) {
             case 'A', 'a' -> "Steak";
@@ -476,20 +236,19 @@ public class UserInterface {
         };
 
         System.out.println("""
-                        How would you like to top this Super-Sandwich?
-                
-                        A) Lettuce
-                        B) Peppers
-                        C) Onions
-                        D) Tomatoes
-                        E) Jalapenos
-                        F) Cucumbers
-                        G) Pickles
-                        H) Guacamole
-                        I) Mushrooms
-                        J) No toppings
-                
-                """);
+            How would you like toppings?
+            A) Lettuce
+            B) Peppers
+            C) Onions
+            D) Tomatoes
+            E) Jalapenos
+            F) Cucumbers
+            G) Pickles
+            H) Guacamole
+            I) Mushrooms
+            J) No toppings
+            """);
+
         char sandwichToppings = readChar();
         String toppingChoice = switch (sandwichToppings) {
             case 'A', 'a' -> "Lettuce";
@@ -506,15 +265,14 @@ public class UserInterface {
         };
 
         System.out.println("""
-                        Let's get cheesey in here!
-                
-                        A) American
-                        B) Provolone
-                        C) Cheddar
-                        D) Swiss
-                        E) No cheese
-                
-                """);
+            Cheese:
+            A) American
+            B) Provolone
+            C) Cheddar
+            D) Swiss
+            E) No cheese
+            """);
+
         char sandwichCheese = readChar();
         String quesoChoice = switch (sandwichCheese) {
             case 'A', 'a' -> "American";
@@ -526,37 +284,16 @@ public class UserInterface {
         };
 
         System.out.println("""
-                        Wanna get super cheesey in here?
-                
-                        A) American
-                        B) Provolone
-                        C) Cheddar
-                        D) Swiss
-                        E) No cheese
-                
-                """);
-        char extraSandwichCheese = readChar();
-        String extraQuesoChoice = switch (extraSandwichCheese) {
-            case 'A', 'a' -> "American";
-            case 'B', 'b' -> "Provolone";
-            case 'C', 'c' -> "Cheddar";
-            case 'D', 'd' -> "Swiss";
-            case 'E', 'e' -> "No cheese";
-            default -> null;
-        };
+            Sauce:
+            A) Mayo
+            B) Mustard
+            C) Ketchup
+            D) Ranch
+            E) Thousand Island
+            F) Vinaigrette
+            G) No sauce
+            """);
 
-        System.out.println("""
-                        Where da sauces at!?
-                
-                        A) Mayo
-                        B) Mustard
-                        C) Ketchup
-                        D) Ranch
-                        E) Thousand Island
-                        F) Vinaigrette
-                        G) No sauce
-                
-                """);
         char sandwichSauce = readChar();
         String sauceChoice = switch (sandwichSauce) {
             case 'A', 'a' -> "Mayo";
@@ -569,57 +306,23 @@ public class UserInterface {
             default -> null;
         };
 
-        System.out.println("""
-                
-                        But do you want it toasted?
-                        Simply let us know!
-                        Yes/No
-                
-                """);
+        System.out.println("Toast? Yes/No");
         keyboard.nextLine();
-        String toastedChoice = keyboard.nextLine().trim();
-        boolean toasted = toastedChoice.equalsIgnoreCase("yes") || toastedChoice.equalsIgnoreCase("y");
+        String toastChoice = readLine();
+        boolean toasted = isYes(toastChoice);
 
-        if (isInvalid(inchChoice, breadChoice, meatChoice, toppingChoice,
-                quesoChoice, sauceChoice, extraMeatChoice, extraQuesoChoice)) {
-            System.out.println("""
-                    +-*-+*-+*+-*++--+*+-*++-*--+*-*-*-*+-*-*-*+-*+*+-*-+*-+*-*-+
-                    Error - Invalid input detected. Returning to previous screen.
-                    +-*-+*-+*+-*++--+*+-*++-*--+*-*-*-*+-*-*-*+-*+*+-*-+*-+*-*-+
-                    """);
+        if (isInvalid(inchChoice, breadChoice, meatChoice, toppingChoice, quesoChoice, sauceChoice)) {
+            System.out.println("Invalid input detected. Returning.");
             return;
         }
 
-        System.out.println("""
-                        Are these selections correct?  
-                """);
-        System.out.println(""
-                + inchChoice + "  |  "
-                + breadChoice + "  |  "
-                + meatChoice + "  |  "
-                + toppingChoice + "  |  "
-                + quesoChoice + "  |  "
-                + sauceChoice + "  |  "
-                + toastedChoice + "  |  "
+        System.out.println("Confirm order? Yes/No");
 
-        );
-        System.out.println("""
-                
-                
-                        The extras status: 
-                """);
-        System.out.println("" + extraMeatChoice + "  &  " + extraQuesoChoice);
-        System.out.println(" ");
-        System.out.println("Enter yes or no below.");
-        String correctChoice = keyboard.next().trim();
+        String confirm = readLine();
 
-        if (isYes(correctChoice)) {
-            System.out.println("""
-                                    **********************************************
-                            This personally crafted masterpiece has been added to your order!
-                                    **********************************************
-                    """);
-            sandwich = new Sandwich(
+        if (isYes(confirm)) {
+
+            Sandwich sandwich = new Sandwich(
                     inchChoice,
                     breadChoice,
                     meatChoice,
@@ -628,16 +331,10 @@ public class UserInterface {
                     sauceChoice,
                     toasted
             );
+
             currentCustomOrder.addItem(sandwich);
-            return;
-        }
-        if (correctChoice.equalsIgnoreCase("no") || correctChoice.equalsIgnoreCase("n")) {
-            System.out.println("""
-                            **********************************
-                          -----Exiting Build-A-Sandwich!-----
-                            **********************************
-                    """);
-            return;
+
+            System.out.println("Sandwich added!");
         }
     }
 
@@ -718,14 +415,13 @@ public class UserInterface {
         if (correctChoice.equalsIgnoreCase("no") || correctChoice.equalsIgnoreCase("n")) {
             System.out.println("""
                             *****************************
-                          -----Restarting Build-A-Bev!-----
+                          -----Exiting Build-A-Bev!-----
                             *****************************
                     
                     """);
             return;
         }
     }
-
 
     public void buildASideScreen() {
         System.out.println("""
@@ -794,8 +490,7 @@ public class UserInterface {
 
     }
 
-
-    public void checkingOutScreen() {
+    public void runCheckingOutScreen() {
         System.out.println("""
                 
                 ----------------
